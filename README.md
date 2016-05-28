@@ -9,8 +9,8 @@ Dependancies
 - omxplayer (comes installed with Retropie 3.7)
 - Must be run as a sudoer user (the default Pi user on Retropie 3.7 is a sudoer)
 
-Required Hardware
------------------
+Required Hardware and Components
+--------------------------------
 - Raspberry Pi Zero
 - Adafruit Powerboost 1000C
 - Pololu Mini Slide Switch LV or Pololu Mini Push Button LV
