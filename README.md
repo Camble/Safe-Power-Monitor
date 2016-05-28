@@ -36,7 +36,12 @@ Default password is 'raspberry'.  Next at the command prompt, copy this monitor 
 cd ~;git clone https://github.com/NullCorn/GBZ-Power-Monitor.git
 ```
 
-Next, add the monitor to the startup process
+Now, launch the Monitor manually and test that it's working properly
+```
+python ~/GBZ-Power-Monitor/gbz_power_monitor.py
+```
+
+Once you are satified that the monitor behaves properly, add the monitor to the startup process
 
 ```
 echo "@reboot     /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
