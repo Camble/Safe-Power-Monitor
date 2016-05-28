@@ -27,12 +27,12 @@ def lowBattery(channel):
 
   #If the LED is a solid condition, there will be no bounce.  Launch shutdown video and then gracefully shutdown
   if bounceSample is int(round(batteryTimeout / sampleRate)) - 1:
-    os.system("/usr/bin/omxplayer --no-osd --layer 999999 '" + shutdownVideo + "' --alpha 180;sudo shutdown -h now");
+    os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + shutdownVideo + " --alpha 180;sudo shutdown -h now");
     sys.exit(0)
 
   #If the LED is a solid for more than 5% of the timeout, we know that the battery is getting low.  Launch the Low Battery alert. 
   if bounceSample > int(round(batteryTimeout / sampleRate * 0.05)):
-    os.system("/usr/bin/omxplayer --no-osd --layer 999999 '" + lowalertVideo + "' --alpha 160;");
+    os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + lowalertVideo + " --alpha 160;");
     
     #Discovered a bug with the Python GPIO library and threaded events.  Need to unbind and rebind after a System Call or the program will crash
     GPIO.remove_event_detect(batteryGPIO)
