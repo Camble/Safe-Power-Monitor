@@ -1,4 +1,4 @@
-# GBZ-Power-Monitor V0.1
+# GBZ-Power-Monitor V1.0
 
 This is a Power Management utlity for the Gameboy Zero project.  This adds graceful shutdowns and automatic low battery alerts and shutdowns when the battery level is low.  
 
