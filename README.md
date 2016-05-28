@@ -8,6 +8,11 @@ This is expecting the following hardware:
 - Adafruit Powerboost 1000C
 - Pololu Mini Slide Switch LV
 
+Along with the following components
+
+- 2N3904 NPN transistor
+- 47k resistor
+
 More detail can be found on this thread:
 
 http://sudomod.com/forum/viewtopic.php?f=8&t=97
