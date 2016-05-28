@@ -20,6 +20,11 @@ Dependancies
 - omxplayer
 - Must be run as a sudoer user (the default Pi user is a sudoer)
 
+Wiring Diagram
+
+![alt tag](http://i.imgur.com/FpPDcmK.png)
+
+
 More detail can be found on this thread:
 
 http://sudomod.com/forum/viewtopic.php?f=8&t=97
