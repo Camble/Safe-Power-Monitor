@@ -18,7 +18,7 @@ Dependancies
 - RPi.GPIO
 - Retropie 3.7
 - omxplayer
-- Must be run as a sudoer user
+- Must be run as a sudoer user (the default Pi user is a sudoer)
 
 More detail can be found on this thread:
 
