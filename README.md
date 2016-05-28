@@ -24,3 +24,5 @@ More detail can be found on this thread:
 
 http://sudomod.com/forum/viewtopic.php?f=8&t=97
 
+Questions, Comments, Kudos, Free Beer to abandonedemails@gmail.com
+Please put "sudomod" somewhere in the subject or your message will not be received.
