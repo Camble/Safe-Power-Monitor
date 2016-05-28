@@ -10,7 +10,7 @@ Required Hardware and Components
 - 2N3904 NPN transistor
 - 47k resistor
 - A SPDT or DPDT latching push and hold switch
-- Original DMG SPDT Slide Power Switch
+- Original DMG (or equivalant) SPDT Slide Power Switch
 
 Dependancies
 -----------
