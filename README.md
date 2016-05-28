@@ -24,13 +24,19 @@ Wiring Diagram
 Installation
 -----------
 
-From the command prompt as the Pi user:
+You will need to connect the PI Zero to Wifi and SSH in with
+
+```
+ssh pi@retropie.local
+```
+
+Default password is 'raspberry'.  Next at the command prompt, copy this monitor and the video assets with the following command:
 
 ```
 cd ~;git clone https://github.com/NullCorn/GBZ-Power-Monitor.git
 ```
 
-To add the monitor to the startup process
+Next, add the monitor to the startup process
 
 ```
 echo "@reboot     /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
