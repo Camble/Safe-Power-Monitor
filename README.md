@@ -26,7 +26,7 @@ Notes
 
 - The built-in slide switch on the Pololu switch in the diagram must be flipped into the off position to work
 - If using the alternate Pololu Mini Push Button LV, just map UART TX to the CTRL pin instead of the On pin
-- the second VOUT and GND from the Pololu switch can go to the power strip from Wermy's latest guide
+- the second VOUT and GND from the Pololu switch (labelled Video DC) can go to the power strip from Wermy's latest guide instead
 
 Installation
 -----------
