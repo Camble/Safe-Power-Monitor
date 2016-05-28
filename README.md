@@ -4,7 +4,7 @@ This is a Power Management utlity for the Gameboy Zero project.  This adds grace
 
 Required Hardware and Components
 --------------------------------
-- Raspberry Pi Zero
+- Raspberry Pi Zero (or Model B+, Raspberry Pi 2 and Pi 3)
 - Adafruit Powerboost 1000C
 - Pololu Mini Slide Switch LV or Pololu Mini Push Button LV
 - 2N3904 NPN transistor
