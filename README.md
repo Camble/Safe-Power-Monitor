@@ -7,8 +7,8 @@ Required Hardware and Components
 - [Raspberry Pi Zero](https://www.raspberrypi.org/products/pi-zero/) (or Model B+, Raspberry Pi 2 and Pi 3)
 - [Adafruit Powerboost 1000C](https://learn.adafruit.com/adafruit-powerboost-1000c-load-share-usb-charge-boost/overview)
 - [Pololu Mini Slide Switch LV](https://www.pololu.com/product/2810) or [Pololu Mini Push Button LV](https://www.pololu.com/product/2808)
-- 2N3904 NPN transistor
-- 47k resistor
+- [2N3904 NPN transistor](https://en.wikipedia.org/wiki/2N3904)
+- [47k resistor](http://resisto.rs/#47K)
 - A mini SPDT or DPDT latching push and hold switch
 - Original DMG (or equivalant) SPDT Slide Power Switch
 
