@@ -24,7 +24,7 @@ Wiring Diagram
 Installation
 -----------
 
-You will need to connect the PI Zero to Wifi and SSH in with
+You will need to connect the PI Zero to Wifi and from another computer on the same WiFI network, SSH in (or use Putty on PCs):
 
 ```
 ssh pi@retropie.local
