@@ -13,7 +13,7 @@ Required Hardware
 -----------------
 - Raspberry Pi Zero
 - Adafruit Powerboost 1000C
-- Pololu Mini Slide Switch LV
+- Pololu Mini Slide Switch LV or Pololu Mini Push Button LV
 - 2N3904 NPN transistor
 - 47k resistor
 
