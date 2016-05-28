@@ -9,6 +9,7 @@ Required Hardware and Components
 - Pololu Mini Slide Switch LV or Pololu Mini Push Button LV
 - 2N3904 NPN transistor
 - 47k resistor
+- A SPDT or DPDT latching push and hold switch
 
 Dependancies
 -----------
