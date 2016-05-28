@@ -41,7 +41,7 @@ Now, launch the Monitor manually and test that it's working properly
 python ~/GBZ-Power-Monitor/gbz_power_monitor.py
 ```
 
-Once you are satified that the monitor behaves properly, add the monitor to the startup process
+Once you are satified that the monitor behaves properly, add the monitor to the startup process to complete the installation
 
 ```
 echo "@reboot     /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
