@@ -13,9 +13,12 @@ Along with the following components
 - 2N3904 NPN transistor
 - 47k resistor
 
-And made for the following OS environment
+Dependancies
 
+- RPi.GPIO
 - Retropie 3.7
+- omxplayer
+- Must be run as a sudoer user
 
 More detail can be found on this thread:
 
