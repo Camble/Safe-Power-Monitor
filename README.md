@@ -20,6 +20,7 @@ Required Hardware and Components
 Wiring Diagram
 -------------
 ![alt tag](http://i.imgur.com/FpPDcmK.png)
+Note: with the Pololu Mini Push Button LV, map UART TX to the CTRL pin.
 
 Installation
 -----------
