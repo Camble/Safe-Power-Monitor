@@ -2,13 +2,6 @@
 
 This is a Power Management utlity for the Gameboy Zero project.  This adds graceful shutdowns and automatic low battery alerts when the battery level is low.  This is meant to be used in concert with the Gameboy Zero hardware and Retropie 3.7+ environment.
 
-Dependancies
------------
-- Retropie 3.7+
-- Python 2.7 and Python Module RPi.GPIO (comes installed with Retropie 3.7)
-- omxplayer (comes installed with Retropie 3.7)
-- Must be run as a sudoer user (the default Pi user on Retropie 3.7 is a sudoer)
-
 Required Hardware and Components
 --------------------------------
 - Raspberry Pi Zero
@@ -16,6 +9,13 @@ Required Hardware and Components
 - Pololu Mini Slide Switch LV or Pololu Mini Push Button LV
 - 2N3904 NPN transistor
 - 47k resistor
+
+Dependancies
+-----------
+- Retropie 3.7+
+- Python 2.7 and Python Module RPi.GPIO (comes installed with Retropie 3.7)
+- omxplayer (comes installed with Retropie 3.7)
+- Must be run as a sudoer user (the default Pi user on Retropie 3.7 is a sudoer)
 
 Wiring Diagram
 -------------
