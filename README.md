@@ -1,4 +1,4 @@
-# GBZ-Power-Monitor V1.0 by Popcorn
+# GBZ-Power-Monitor V1.0 by Popcorn 🍿
 
 This is a Power Management utlity for the Gameboy Zero project.  This adds graceful shutdowns and automatic low battery alerts when the battery level is low.  This is meant to be used in concert with the Gameboy Zero hardware and Retropie 3.7+ environment.
 
