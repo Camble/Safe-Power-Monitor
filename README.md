@@ -4,9 +4,9 @@ This is a Power Management utlity for the Gameboy Zero project.  This adds grace
 
 This is expecting the following hardware:
 
-Raspberry Pi Zero
-Adafruit Powerboost 1000C
-Pololu Mini Slide Switch LV
+- Raspberry Pi Zero
+- Adafruit Powerboost 1000C
+- Pololu Mini Slide Switch LV
 
 
 More detail can be found on this thread:
