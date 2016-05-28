@@ -8,6 +8,18 @@ This is expecting the following hardware:
 - Adafruit Powerboost 1000C
 - Pololu Mini Slide Switch LV
 
+                              __________________________________________________
+                             |              __________________________________  |(LowBatt)
+                             |             |                      (Off Signal)| |                       
+               [USB PowerIn] |      [ON/OFF Switch]   [Audio Amp AC]          | | 
+                     |       |             | (on only)      ▲                 | |
+                     ▼       |             ▼                |                 ▼ ▼
+[Battery] ◄-► [Powerboost 1000C] -► [Pololu Switch]  --► [GBZ AC]  ◄---►  [GPIO Ports] 
+                     ▲                     ▲ (off only)     |                   | 
+                     |                     |                ▼                   |
+         [Emergency Reset Button]          |        [Video Screen AC]           |
+                                           |____________________________________|
+                                           (UART TX killed on clean shutdown)
 
 More detail can be found on this thread:
 
