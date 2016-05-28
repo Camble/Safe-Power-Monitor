@@ -9,8 +9,8 @@ powerGPIO      = 27  # GPIO 27/pin 2
 sampleRate     = 0.1 # ten of a second
 batteryTimeout = 30  # 30 seconds
 powerTimeout   = 1   # 1 second
-shutdownVideo  = "~/RetroPie/splashscreens/popcorn_power/lowbattshutdown.mp4"
-lowalertVideo  = "~/RetroPie/splashscreens/popcorn_power/lowbattalert.mp4"
+shutdownVideo  = "~/lowbattshutdown.mp4"
+lowalertVideo  = "~/lowbattalert.mp4"
 
 
 GPIO.setmode(GPIO.BCM)
