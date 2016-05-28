@@ -20,7 +20,11 @@ Required Hardware and Components
 Wiring Diagram
 -------------
 ![alt tag](http://i.imgur.com/FpPDcmK.png)
-Note: with the Pololu Mini Push Button LV, map UART TX to the CTRL pin.
+Notes
+
+- The built-in slide switch on the Pololu switch in the diagram must be flipped into the off position to work
+- If using the alternate Pololu Mini Push Button LV, just map UART TX to the CTRL pin instead of the On pin
+- the second VOUT and GND from the Pololu switch can go to the power strip from Wermy's latest guide
 
 Installation
 -----------
