@@ -5,7 +5,7 @@ This is a Power Management utlity for the Gameboy Zero project.  This adds grace
 Dependancies
 -----------
 - Retropie 3.7+
-- Python Module RPi.GPIO (comes installed with Retropie 3.7)
+- Python 2.7 and Python Module RPi.GPIO (comes installed with Retropie 3.7)
 - omxplayer (comes installed with Retropie 3.7)
 - Must be run as a sudoer user (the default Pi user on Retropie 3.7 is a sudoer)
 
