@@ -52,7 +52,7 @@ python ~/GBZ-Power-Monitor/gbz_power_monitor.py
 Once you are satified that the monitor behaves properly, add the monitor to the startup process to complete the installation
 
 ```
-echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
+echo "@reboot     /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
 ```
 
 Video Examples
