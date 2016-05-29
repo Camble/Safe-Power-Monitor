@@ -24,7 +24,8 @@ def lowBattery(channel):
 
     if GPIO.input(batteryGPIO) is 1:
        break
-     
+  
+  global playerFlag   
   while playerFlag is 1:
     time.sleep(1)
      
