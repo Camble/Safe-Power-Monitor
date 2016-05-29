@@ -9,7 +9,7 @@ Required Hardware and Components
 - [Pololu Mini Slide Switch LV](https://www.pololu.com/product/2810) or [Pololu Mini Push Button LV](https://www.pololu.com/product/2808)
 - [2N3904 NPN transistor](https://en.wikipedia.org/wiki/2N3904)
 - [47k resistor](http://resisto.rs/#47K)
-- A mini SPDT or DPDT latching push and hold switch
+- A mini SPDT or DPDT latching push and hold switch (for emergency resets and prolonged storage)
 - Original DMG (or equivalant) SPDT Slide Power Switch
 
 Dependencies
