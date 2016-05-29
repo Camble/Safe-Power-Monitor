@@ -71,10 +71,10 @@ def main():
   #Add threaded event listeners for the Low Battery and Power Switch
   try:
     GPIO.remove_event_detect(batteryGPIO)
-    GPIO.add_event_detect(batteryGPIO, GPIO.BOTH, callback=lowBattery, bouncetime=300)
+    GPIO.add_event_detect(batteryGPIO, GPIO.FALLING, callback=lowBattery, bouncetime=300)
 
     GPIO.remove_event_detect(powerGPIO)
-    GPIO.add_event_detect(powerGPIO, GPIO.BOTH, callback=powerSwitch, bouncetime=300)
+    GPIO.add_event_detect(powerGPIO, GPIO.FALLING, callback=powerSwitch, bouncetime=300)
   except KeyboardInterrupt:
     GPIO.cleanup()
 
