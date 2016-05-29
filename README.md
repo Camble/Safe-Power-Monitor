@@ -12,7 +12,7 @@ Required Hardware and Components
 - A mini SPDT or DPDT latching push and hold switch
 - Original DMG (or equivalant) SPDT Slide Power Switch
 
-Dependancies
+Dependencies
 -----------
 - [Retropie 3.7+](retropie.org.uk)
 - Python 2.7 and Python Module RPi.GPIO (comes installed with Retropie 3.7)
