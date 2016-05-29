@@ -11,6 +11,7 @@ batteryTimeout = 10  # 10 seconds
 powerTimeout   = 1   # 1 second
 shutdownVideo  = "~/GBZ-Power-Monitor/lowbattshutdown.mp4" # use no space or non-alphanum characters
 lowalertVideo  = "~/GBZ-Power-Monitor/lowbattalert.mp4"    # use no space or non-alphanum characters
+playerFlag     = 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(batteryGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -23,15 +24,22 @@ def lowBattery(channel):
 
     if GPIO.input(batteryGPIO) is 1:
        break
-
+     
+  while playerFlag is 1:
+    time.sleep(1)
+     
   #If the LED is a solid condition, there will be no bounce.  Launch shutdown video and then gracefully shutdown
   if bounceSample is int(round(batteryTimeout / sampleRate)) - 1:
+    playerFlag = 1
     os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + shutdownVideo + " --alpha 180;sudo shutdown -h now");
+    playerFlag = 0
     sys.exit(0)
 
   #If the LED is a solid for more than 10% of the timeout, we know that the battery is getting low.  Launch the Low Battery alert. 
   if bounceSample > int(round(batteryTimeout / sampleRate * 0.1)):
+    playerFlag = 1
     os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + lowalertVideo + " --alpha 160;");
+    playerFlag = 0
     
     #Discovered a bug with the Python GPIO library and threaded events.  Need to unbind and rebind after a System Call or the program will crash
     GPIO.remove_event_detect(batteryGPIO)
