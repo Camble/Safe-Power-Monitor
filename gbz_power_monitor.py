@@ -7,7 +7,7 @@ import time
 batteryGPIO    = 17  # GPIO 17/pin 0
 powerGPIO      = 27  # GPIO 27/pin 2
 sampleRate     = 0.1 # tenth of a second
-batteryTimeout = 10  # 30 seconds
+batteryTimeout = 10  # 10 seconds
 powerTimeout   = 1   # 1 second
 shutdownVideo  = "~/GBZ-Power-Monitor/lowbattshutdown.mp4" # use no space characters
 lowalertVideo  = "~/GBZ-Power-Monitor/lowbattalert.mp4"    # use no space characters
@@ -30,8 +30,8 @@ def lowBattery(channel):
     os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + shutdownVideo + " --alpha 180;sudo shutdown -h now");
     sys.exit(0)
 
-  #If the LED is a solid for more than 5% of the timeout, we know that the battery is getting low.  Launch the Low Battery alert. 
-  if bounceSample > int(round(batteryTimeout / sampleRate * 0.05)):
+  #If the LED is a solid for more than 10% of the timeout, we know that the battery is getting low.  Launch the Low Battery alert. 
+  if bounceSample > int(round(batteryTimeout / sampleRate * 0.1)):
     os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + lowalertVideo + " --alpha 160;");
     
     #Discovered a bug with the Python GPIO library and threaded events.  Need to unbind and rebind after a System Call or the program will crash
