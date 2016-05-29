@@ -12,7 +12,6 @@ powerTimeout   = 1   # 1 second
 shutdownVideo  = "~/GBZ-Power-Monitor/lowbattshutdown.mp4" # use no space or non-alphanum characters
 lowalertVideo  = "~/GBZ-Power-Monitor/lowbattalert.mp4"    # use no space or non-alphanum characters
 
-
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(batteryGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(powerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -86,5 +85,3 @@ while True:
   do = "nothing"
 
 GPIO.cleanup()
-
-
