@@ -46,6 +46,8 @@ def lowBattery(channel):
     GPIO.remove_event_detect(batteryGPIO)
     GPIO.add_event_detect(batteryGPIO, GPIO.BOTH, callback=lowBattery, bouncetime=300)
     
+    lowBattery(batteryGPIO)
+    
 def powerSwitch(channel):
   #Checking for LED bounce for the duration of the Power Timeout
   for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
