@@ -2,6 +2,8 @@
 
 This is a Power Management utlity for the [Gameboy Zero](http://sudomod.com/hi/) project.  This adds graceful shutdowns from the main power switch and automatic low battery alerts and shutdowns when the battery level is low.  This is meant to be used in concert with the Gameboy Zero hardware and Retropie 3.7+ environment.
 
+This solution will work in any portable battery powered raspberry PI unit that uses a Powerboost 1000C. So not only can this be applied to the Gameboy Zero project, but also to the Adafruit Pi Grrl and Pi Grrl 2 projects as well as a wide variety of portable retro gaming systems that use the Raspberry Pi.
+
 Background
 ----------
 Currently in the GBZ, the power switch works like a normal On/Off switch. The only problem is when you cut the power, it's kinda hard on the system. There's no clean dismounting of the drives. It's really just like yanking the power out. And that's been known to cause corrupted files and disks.
@@ -11,9 +13,6 @@ My goal is to add an inexpensive and small electronic switch that will take care
 The main power switch will toggle ON the Pololu switch (but only ON, not off). Then, we need 3 GPIO pins mapped, one as output, and two as input. Once the unit is turned on, a GPIO pin will be configured as output and send a signal to the ON pin of the electric switch which overrides it to remain on. Basically ensuring the system remains on until we are ready to shut it off. Another GPIO input pin will read the setting of the power switch, so we can tell when the user wants to shutdown. The other GPIO input pin will go to the low pin of the Powerboost, so we can gracefully power down automatically when the battery is very low. A nice little add.
 
 Last year, the Raspberry Foundation added a driver patch to support what we are trying to do called GPIO-Poweroff. This allows you to assign changes to GPIO state once the shutdown process is completed. So what we do is assign GPIO-Poweroff to the GPIO output pin that is feeding the ON signal on the Pololu switch. Once the shutdown is completed, the system itself will flip the state to low and that will shut the switch off.
-
-This solution will work in any portable battery powered raspberry PI unit that uses a Powerboost 1000C.  So not only can this be applied to the Gameboy Zero project, but also to the Adafruit Pi Grrl and Pi Grrl 2 projects as well as a wide variety of portable retro gaming systems that use the Raspberry Pi.
-
 
 Required Hardware and Components
 --------------------------------
