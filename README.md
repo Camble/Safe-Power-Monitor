@@ -32,6 +32,7 @@ dtoverlay=gpio-poweroff,gpiopin=4
 
 - the 2nd VOUT & GND from the Pololu switch (labeled Video DC) can go to the power strip from Wermy's [video guide 4](http://sudomod.com/game-boy-zero-guide-part-4/)
 - In Wermy's latest wiring [video guide number 4](http://sudomod.com/game-boy-zero-guide-part-4/), he wires the main power switch to be closed when OFF, this needs to be inverted for the Pololu switch.  Use the other pin on the switch which closes when ON (or just turn the switch around).  These will be mapped to the SW and GND pins of the Pololu instead
+- If the latching emergency reset doesn't work, try mapping it to a shared ground.
 
 Installation
 -----------
