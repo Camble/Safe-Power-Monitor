@@ -53,6 +53,7 @@ def lowBattery(channel):
     GPIO.remove_event_detect(batteryGPIO)
     GPIO.add_event_detect(batteryGPIO, GPIO.BOTH, callback=lowBattery, bouncetime=300)
     
+    #If we know the battery is low, we aggresively monitor the level to ensure we shutdown once the Power Timeout is exceeded.
     lowBattery(batteryGPIO)
     
 def powerSwitch(channel):
