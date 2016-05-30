@@ -60,6 +60,17 @@ Once you are satified that the monitor behaves properly, add the monitor to the 
 echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
 ```
 
+Keeping Up-to-Date
+------------------
+I'm always tinkering with the script to fix bugs and improve it's stablity.  There's a bunch of changes I'm planning to add including the ability to detect when the power is plugged in, which would cancel the shutdown process.  Presently, it will shutdown even if you had rushed to go plug in the unit.
+
+So, as I continue to tinker and add these things, you can make sure you have the latest updates by issuing this command
+
+```
+cd ~/GBZ-Power-Monitor;git pull origin master
+```
+
+
 Video Examples
 --------------
 https://www.youtube.com/watch?v=TRkEfD04unk
