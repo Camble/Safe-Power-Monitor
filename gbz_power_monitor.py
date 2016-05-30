@@ -1,8 +1,9 @@
 #!/usr/bin/env python2.7
 # date: 30/05/16
+# author: Popcorn <abandonedemails@gmail.com> - Add "Sudomod" in the subject or your message will not be received
 # version: 1.0a
-# name: GBZ Power Monitor for the Gameboy Zero project
-# description: a GPIO monitor that detects low battery and power switch status which provides a graceful shutdown procudure
+# name: GBZ-Power-Monitor - a Power Management utility for the Gameboy Zero project
+# description: a GPIO monitor that detects low battery and power switch status which provides a graceful shutdown facility
 # source: https://github.com/NullCorn/GBZ-Power-Monitor/
 
 import RPi.GPIO as GPIO
