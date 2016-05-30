@@ -25,7 +25,7 @@ Wiring Diagram
 Notes
 
 - The built-in slide switch on the Pololu switch in the diagram must be flipped into the off position to work
-- If using the alternate Pololu Mini Push Button LV, instead of using UART TX to the CTRL pin, map physical pin 7/GPIO4 to the OFF pin of the Pololu Push Button LV and add the following to the /boot/config.txt file
+- If using the alternate Pololu Mini Push Button LV, instead of using UART TX to the ON pin, map physical pin 7/GPIO4 to the OFF pin of the Pololu Push Button LV and add the following to the /boot/config.txt file
 ```
 dtoverlay=gpio-poweroff,gpiopin=4
 ```
