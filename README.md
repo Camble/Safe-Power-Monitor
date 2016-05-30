@@ -1,6 +1,6 @@
 # GBZ-Power-Monitor V1.0 by Popcorn 🍿
 
-This is a Power Management utlity for the [Gameboy Zero](http://sudomod.com/hi/) project.  This adds graceful shutdowns and automatic low battery alerts when the battery level is low.  This is meant to be used in concert with the Gameboy Zero hardware and Retropie 3.7+ environment.
+This is a Power Management utlity for the [Gameboy Zero](http://sudomod.com/hi/) project.  This adds graceful shutdowns from the main power switch and automatic low battery alerts and shutdowns when the battery level is low.  This is meant to be used in concert with the Gameboy Zero hardware and Retropie 3.7+ environment.
 
 Required Hardware and Components
 --------------------------------
@@ -25,7 +25,11 @@ Wiring Diagram
 Notes
 
 - The built-in slide switch on the Pololu switch in the diagram must be flipped into the off position to work
-- If using the alternate Pololu Mini Push Button LV, just map UART TX to the CTRL pin instead of the On pin
+- If using the alternate Pololu Mini Push Button LV, instead of using UART TX to the CTRL pin, map physical pin 7/GPIO4 to the OFF pin of the Pololu Push Button LV and add the following to the /boot/config.txt file
+```
+dtoverlay=gpio-poweroff,gpiopin=4
+```
+
 - the 2nd VOUT & GND from the Pololu switch (labeled Video DC) can go to the power strip from Wermy's [video guide 4](http://sudomod.com/game-boy-zero-guide-part-4/)
 - In Wermy's latest wiring [video guide number 4](http://sudomod.com/game-boy-zero-guide-part-4/), he wires the main power switch to be closed when OFF, this needs to be inverted for the Pololu switch.  Use the other pin on the switch which closes when ON (or just turn the switch around).  These will be mapped to the SW and GND pins of the Pololu instead
 
@@ -49,7 +53,7 @@ Now, launch the Monitor manually and test that it's working properly
 python ~/GBZ-Power-Monitor/gbz_power_monitor.py
 ```
 
-Once you are satified that the monitor behaves properly, add the monitor to the startup process to complete the installation
+Once you are satified that the monitor behaves properly, add the monitor to the startup process to complete the installation and then reboot to make it live.
 
 ```
 echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
