@@ -1,4 +1,10 @@
 #!/usr/bin/env python2.7
+# date: 30/05/16
+# version: 1.0a
+# name: GBZ Power Monitor for the Gameboy Zero project
+# description: a GPIO monitor that detects low battery and power switch status which provides a graceful shutdown procudure
+# source: https://github.com/NullCorn/GBZ-Power-Monitor/
+
 import RPi.GPIO as GPIO
 import os
 import sys
