@@ -2,7 +2,7 @@
 
 This is a Power Management utlity which is primarily built for the [Gameboy Zero](http://sudomod.com/hi/) project.  This adds graceful shutdowns from the main power switch and automatic low battery alerts and shutdowns when the battery level is low.  This is meant to be used in concert with the list of required hardware and components within the Retropie 3.7+ environment.
 
-This solution will work in any portable battery powered raspberry PI unit that uses a Powerboost 1000C. So not only can this be applied to the Gameboy Zero project, but also to the Adafruit Pi Grrl and Pi Grrl 2 projects as well as a wide variety of portable retro gaming systems that use the Raspberry Pi.
+This solution will work in any portable battery powered raspberry PI unit that uses a Powerboost 1000C. So not only can this be applied to the Gameboy Zero project, but also to the Adafruit Pi Grrl and Pi Grrl 2 projects as well as a wide variety of portable retro gaming systems that use the Raspberry Pi and a Powerboost 1000C
 
 Background
 ----------
