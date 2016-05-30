@@ -93,6 +93,6 @@ main()
 
 #We make an endless loop so the threads running the GPIO events will always be listening, in the future we can add Battery Level monitoring here
 while True:
-  do = "nothing"
+  time.sleep(1)
 
 GPIO.cleanup()
