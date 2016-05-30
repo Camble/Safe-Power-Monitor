@@ -82,10 +82,10 @@ cd ~/GBZ-Power-Monitor;git pull origin master
 
 FAQ
 ---
-**Q: What is the purpose of the Latching Switch?**
-A: Since we are changing the way the PI powers down, by software, in case your Pi has a kernel panic or, for example, the monitor unexpectedly crashes, your pi will be stuck on and you'd have to get your screwdriver out to reset it. How annoying! So this was added as a way to do that. It's also used when you want to store the unit for longer periods of time, this lets you disconnect the batteries. The button should be recessed so it's not easily hit. ie: Mount it internally an drill a pin hole where a paperclip is needed to hit it.
+**What is the purpose of the Latching Switch?**
+Since we are changing the way the PI powers down, by software, in case your Pi has a kernel panic or, for example, the monitor unexpectedly crashes, your pi will be stuck on and you'd have to get your screwdriver out to reset it. How annoying! So this was added as a way to do that. It's also used when you want to store the unit for longer periods of time, this lets you disconnect the batteries. The button should be recessed so it's not easily hit. ie: Mount it internally an drill a pin hole where a paperclip is needed to hit it.
 
-**Q: Is using the Powerboost 1000C mandatory?**
+**Is using the Powerboost 1000C mandatory?**
 A: Maybe.  You could use other power supplies, however, if they do not have a Low Battery indictor like an LED or dedicated pinout, then you will lose the automatic Low Battery warnings and shutdowns, which one of the core functions of this monitor.  You could still use this for a dedicated power switch which would still gracefully shut down. 
 
 Video Examples
