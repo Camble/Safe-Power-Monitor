@@ -1,6 +1,8 @@
 # GBZ-Power-Monitor V1.0a by Popcorn 🍿
 
-UPDATE: There are multiple reports that [Camble](http://sudomod.com/forum/memberlist.php?mode=viewprofile&u=76)'s Graceful Shutdown hardware solution works perfectly and with the ability to close the EN pin on the Powerboost. Something that the Pololu solution cannot do which was annoying to some. So, I would strongly consider using [his hardware method](http://sudomod.com/forum/viewtopic.php?f=22&p=10968#p10968) if you have not already purchased a pololu switch. You can still use my monitor also with the low battery warning along with his solution (with a slight modification of one line of code). I will be testing the circuit and revising my instructions once I'm able to replicate everything and it's working well. Thanks!
+UPDATE
+------
+There are multiple reports that [Camble](http://sudomod.com/forum/memberlist.php?mode=viewprofile&u=76)'s Graceful Shutdown hardware solution works perfectly and with the ability to close the EN pin on the Powerboost. Something that the Pololu solution cannot do which was annoying to some. So, I would strongly consider using [his hardware method](http://sudomod.com/forum/viewtopic.php?f=22&p=10968#p10968) if you have not already purchased a pololu switch. You can still use my monitor also with the low battery warning along with his solution (with a slight modification of one line of code). I will be testing the circuit and revising my instructions once I'm able to replicate everything and it's working well. Thanks!
 
 ORIGINAL POLOLU SOLUTION BELOW:
 
