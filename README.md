@@ -1,5 +1,9 @@
 # GBZ-Power-Monitor V1.0a by Popcorn 🍿
 
+UPDATE: There are multiple reports that [Camble](http://sudomod.com/forum/memberlist.php?mode=viewprofile&u=76)'s Graceful Shutdown hardware solution works perfectly and with the ability to close the EN pin on the Powerboost. Something that the Pololu solution cannot do which was annoying to some. So, I would strongly consider using [his hardware method](http://sudomod.com/forum/viewtopic.php?f=22&p=10968#p10968) if you have not already purchased a pololu switch. You can still use my monitor also with the low battery warning along with his solution (with a slight modification of one line of code). I will be testing the circuit and revising my instructions once I'm able to replicate everything and it's working well. Thanks!
+
+ORIGINAL POLOLU SOLUTION BELOW:
+
 This is a Power Management utlity which is primarily built for the [Gameboy Zero](http://sudomod.com/hi/) project.  This adds graceful shutdowns from the main power switch and automatic low battery alerts and shutdowns when the battery level is low.  This is meant to be used in concert with the provided list of required hardware and components within a Retropie 3.7+ environment.
 
 This solution will work in any portable battery powered raspberry PI unit that uses a Powerboost 1000C. So not only can this be applied to the Gameboy Zero project, but also to the Adafruit Pi Grrl and Pi Grrl 2 projects as well as a wide variety of portable retro gaming systems or IoT solutions that use the Raspberry Pi and a Powerboost 1000C
