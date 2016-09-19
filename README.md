@@ -36,21 +36,6 @@ Dependencies
 - omxplayer (comes installed with Retropie 3.7)
 - Must be run as a sudoer user (the default Pi user on Retropie 3.7 is a sudoer)
 
-Wiring Diagram
--------------
-![alt tag](http://i.imgur.com/FpPDcmK.png)
-Notes
-
-- The built-in slide switch on the Pololu switch in the diagram must be flipped into the off position to work
-- If using the alternate Pololu Mini Push Button LV, instead of using UART TX to the ON pin, map physical pin 7/GPIO4 to the OFF pin of the Pololu Push Button LV and add the following to the /boot/config.txt file
-```
-dtoverlay=gpio-poweroff,gpiopin=4
-```
-
-- the 2nd VOUT & GND from the Pololu switch (labeled Video DC) can go to the power strip from Wermy's [video guide 4](http://sudomod.com/game-boy-zero-guide-part-4/)
-- In Wermy's latest wiring [video guide number 4](http://sudomod.com/game-boy-zero-guide-part-4/), he wires the main power switch to be closed when OFF, this needs to be inverted for the Pololu switch.  Use the other pin on the switch which closes when ON (or just turn the switch around).  These will be mapped to the SW and GND pins of the Pololu instead. (or to A and B of the Pololu Push Button version)
-- If the latching emergency reset doesn't work, try mapping it to a shared ground.
-
 Installation
 -----------
 
@@ -63,7 +48,7 @@ ssh pi@retropie.local
 Default password is 'raspberry'.  Next at the command prompt, copy this monitor and the video assets with the following command:
 
 ```
-cd ~;git clone https://github.com/NullCorn/GBZ-Power-Monitor.git
+cd ~;git clone https://github.com/Camble/GBZ-Power-Monitor_PB.git
 ```
 
 Now, launch the Monitor manually and test that it's working properly
