@@ -22,7 +22,7 @@ playerFlag     = 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(batteryGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(powerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(powerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 def lowBattery(channel):
   #Checking for LED bounce for the duration of the battery Timeout
