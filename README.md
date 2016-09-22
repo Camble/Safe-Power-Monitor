@@ -5,9 +5,6 @@ Background
 ----------
 Currently in the GBZ, the power switch works like a normal On/Off switch. The only problem is when you cut the power, it's kinda hard on the system. There's no clean dismounting of the drives. It's really just like yanking the power out. And that's been known to cause corrupted files and disks.
 
-My goal is to add an inexpensive and small electronic switch that will take care of the killing the power part, but only after a clean shutdown process. After some research, both the Pololu Mini Pushbutton LV or the Pololu Mini Slider LV will both work and fits our needs. They are basically identical in size and price ($5) with a couple extra features on the pushbutton version.
-
-The main power switch will toggle ON the Pololu switch (but only ON, not off). Then, we need 3 GPIO pins mapped, one as output, and two as input. Once the unit is turned on, we use the built-in UART TX pin and send a signal to the ON pin of the electric switch which overrides it to remain on. (Alternatively, for the Pololu Mini Push Button switch, we use a GPIO pin mapped with the GPIO-Poweroff driver which maps to the OFF pin which tells the switch to shut off when we successfully power off). This ensures the system remains on until we are ready to shut it off. Another GPIO input pin will read the setting of the power switch, so we can tell when the user wants to shutdown. And lastly, the final GPIO input pin will go to the pin attached to the Low Battery LED of the Powerboost, so we can gracefully power down automatically when the battery is very low. A nice little add.
 
 Required Hardware and Components
 --------------------------------
