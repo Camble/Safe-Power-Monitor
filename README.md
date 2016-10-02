@@ -62,9 +62,7 @@ echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/GBZ-Power-Monitor_PB/gbz
 
 Keeping Up-to-Date
 ------------------
-I'm always tinkering with the script to fix bugs and improve it's stablity.  There's a bunch of changes I'm planning to add including the ability to detect when the power is plugged back in, which would cancel the shutdown process.  Presently, once the shutdown process is activated, it will shutdown even if you had rushed to go plug in the unit.  I also want to add logging and implement proper threaded processes.  Right now, it's a bit uglier than I would want.
-
-So, as I continue to tinker and add these things, you can make sure you have the latest updates by issuing this command
+You can make sure you have the latest updates by issuing this command
 
 ```
 cd ~/GBZ-Power-Monitor_PB;git pull origin master
