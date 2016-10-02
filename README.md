@@ -51,13 +51,13 @@ cd ~;git clone https://github.com/Camble/GBZ-Power-Monitor_PB.git
 
 Now, launch the Monitor manually and test that it's working properly
 ```
-python ~/GBZ-Power-Monitor/gbz_power_monitor.py
+python ~/GBZ-Power-Monitor_PB/gbz_power_monitor.py
 ```
 
 Once you are satified that the monitor behaves properly, add the monitor to the startup process to complete the installation and then reboot to make it live.
 
 ```
-echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/GBZ-Power-Monitor/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
+echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/GBZ-Power-Monitor_PB/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
 ```
 
 Keeping Up-to-Date
