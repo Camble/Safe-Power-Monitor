@@ -67,7 +67,7 @@ I'm always tinkering with the script to fix bugs and improve it's stablity.  The
 So, as I continue to tinker and add these things, you can make sure you have the latest updates by issuing this command
 
 ```
-cd ~/GBZ-Power-Monitor;git pull origin master
+cd ~/GBZ-Power-Monitor_PB;git pull origin master
 ```
 
 Video Examples
