@@ -16,8 +16,8 @@ powerGPIO      = 27  # GPIO 27/pin 2
 sampleRate     = 0.1 # tenth of a second
 batteryTimeout = 10  # 10 seconds
 powerTimeout   = 1   # 1 second
-shutdownVideo  = "~/GBZ-Power-Monitor/lowbattshutdown.mp4" # use no space or non-alphanum characters
-lowalertVideo  = "~/GBZ-Power-Monitor/lowbattalert.mp4"    # use no space or non-alphanum characters
+shutdownVideo  = "~/GBZ-Power-Monitor_PB/lowbattshutdown.mp4" # use no space or non-alphanum characters
+lowalertVideo  = "~/GBZ-Power-Monitor_PB/lowbattalert.mp4"    # use no space or non-alphanum characters
 playerFlag     = 0
 
 GPIO.setmode(GPIO.BCM)
