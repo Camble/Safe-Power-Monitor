@@ -3,7 +3,7 @@ based on Popcorn's original GBZ-Power-Monitor
 
 Background
 ----------
-Currently in the GBZ, the power switch works like a normal On/Off switch. The only problem is when you cut the power, it's kinda hard on the system. There's no clean dismounting of the drives. It's really just like yanking the power out. And that's been known to cause corrupted files and disks.
+Currently in the GameBoy Zero, the power switch works like a normal On/Off switch. The only problem is when you cut the power, it's kinda hard on the system. There's no clean dismounting of the drives. It's really just like yanking the power out. And that's been known to cause corrupted files and disks.
 
 
 Required Hardware and Components
@@ -31,33 +31,21 @@ ssh pi@retropie.local
 
 Default password is 'raspberry'. At the command prompt, edit the /boot/config.txt file:
 
-```
-sudo nano /boot/config.txt
-```
-
-Add the following line:
+Copy the Safe Power Monitor script and video assets with the following command:
 
 ```
-dtoverlay=gpio-poweroff,gpiopin=22,active_low="y"
+cd ~;git clone https://github.com/Camble/Safe-Power-Monitor.git
 ```
 
-Press Ctrl+X to exit, hit Y to save and press return.
-
-Next at the command prompt, copy this monitor and the video assets with the following command:
-
+Now, launch the script and test that it's working properly
 ```
-cd ~;git clone https://github.com/Camble/GBZ-Power-Monitor_PB.git
+python ~/Safe-Power-Monitor/safe_power_monitor.py
 ```
 
-Now, launch the Monitor manually and test that it's working properly
-```
-python ~/GBZ-Power-Monitor_PB/gbz_power_monitor.py
-```
-
-Once you are satified that the monitor behaves properly, add the monitor to the startup process to complete the installation and then reboot to make it live.
+Once you are satified that the monitor behaves properly, add it to the startup process to complete the installation and then reboot.
 
 ```
-echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/GBZ-Power-Monitor_PB/gbz_power_monitor.py" >> mycron; crontab mycron;rm mycron
+echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_power_monitor.py" >> mycron; crontab mycron;rm mycron
 ```
 
 Keeping Up-to-Date
