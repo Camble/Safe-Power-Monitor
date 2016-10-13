@@ -10,7 +10,7 @@ Required Hardware and Components
 --------------------------------
 - [Raspberry Pi Zero](https://www.raspberrypi.org/products/pi-zero/) (or Model B+, Raspberry Pi 2 and Pi 3)
 - [Adafruit Powerboost 1000C](https://learn.adafruit.com/adafruit-powerboost-1000c-load-share-usb-charge-boost/overview)
-- Safe Shutdown PCB (PowerBoost Edition)
+- Safe Shutdown PCB (PowerBoost or BangGood Edition)
 - A mini DPDT slide switch (SK-22H07 included with Safe Shutdown PCB) or an original DMG slide power switch.
 
 Dependencies
