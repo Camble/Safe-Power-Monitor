@@ -67,9 +67,12 @@ Power Switch test
 Links
 -----
 More detail can be found on this thread:
-
 http://sudomod.com/forum/viewtopic.php?f=8&t=97
 
-Contact
--------
-Questions, Comments, Kudos, Free Beer to abandonedemails@gmail.com. Please put "sudomod" somewhere in the subject or your message will not be received.
+Pre-order thread for Safe Shutdown Switch:
+http://sudomod.com/forum/viewtopic.php?f=3&t=1293
+
+Guide to creating a Safe Shutdown Switch of your own:
+http://sudomod.com/forum/viewtopic.php?f=22&t=1059
+
+Feel free to contact me on the Sudomod forums (www.sudomod.com/forum) or on the Sudomod Discord channel (https://discordapp.com/channels/188359728454303744/188359728454303744)
