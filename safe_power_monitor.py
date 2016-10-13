@@ -160,8 +160,8 @@ def main():
     batteryInternalResistor = None            # Use GPIO.PUD_UP, GPIO.PUD_DOWN, or None
 
   # Create some GpioWatchers
-  powerWatcher = PowerWatcher(powerGPIO, GPIO.PUD_DOWN, 1)
-  batteryWatcher = BatteryWatcher(batteryGPIO, None, 0)
+  powerWatcher = PowerWatcher(powerGPIO, powerInternalResistor, powerTriggerState)
+  batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
 
 # Run the program
 main()
