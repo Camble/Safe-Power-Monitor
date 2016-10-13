@@ -25,8 +25,8 @@ powerTimeout        = 1    # How long in seconds before acting on power switch
 videoAlpha          = 180  # Alpha transparency for overlaid videos
 
 videoPlayer         = "/usr/bin/omxplayer --no-osd --layer 999999"   # Path to video player and switches for overlay layer
-shutdownVideo       = "~/GBZ-Power-Monitor/lowbattshutdown.mp4"      # Use no spaces or non-alphanum characters
-lowalertVideo       = "~/GBZ-Power-Monitor/lowbattalert.mp4"         # Use no spaces or non-alphanum characters
+shutdownVideo       = "~/Safe-Power-Monitor/lowbattshutdown.mp4"      # Use no spaces or non-alphanum characters
+lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Use no spaces or non-alphanum characters
 
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ==================== 
 
