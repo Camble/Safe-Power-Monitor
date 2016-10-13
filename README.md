@@ -1,4 +1,4 @@
-# Safe-Power-Monitor V1.0a by Camble
+# Safe-Power-Monitor v1.0a by Camble
 based on Popcorn's original GBZ-Power-Monitor
 
 Background
@@ -53,7 +53,7 @@ Keeping Up-to-Date
 You can make sure you have the latest updates by issuing this command
 
 ```
-cd ~/GBZ-Power-Monitor_PB;git pull origin master
+cd ~/Safe-Power-Monitor;git pull origin master
 ```
 
 Video Examples
