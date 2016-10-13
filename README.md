@@ -1,5 +1,5 @@
-# GBZ-Power-Monitor V1.0a by Popcorn
-PowerBoost edition (amended by Camble)
+# Safe-Power-Monitor V1.0a by Camble
+based on Popcorn's original GBZ-Power-Monitor
 
 Background
 ----------
