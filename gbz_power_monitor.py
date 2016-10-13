@@ -4,7 +4,7 @@
 # version: 1.0a
 # name: GBZ-Power-Monitor - a Power Management utility for the Gameboy Zero project
 # description: a GPIO monitor that detects low battery and power switch status which provides a graceful shutdown facility
-# source: https://github.com/NullCorn/GBZ-Power-Monitor/
+# source: https://github.com/Camble/GBZ-Power-Monitor_PB
 
 import RPi.GPIO as GPIO
 import os
