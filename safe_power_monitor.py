@@ -126,7 +126,7 @@ class BatteryWatcher(GpioWatcher):
 def main():
 
   # Check /boot/config.txt for dtoverlay line, and add it if required
-  newLine = "dtoverlay=gpio-poweroff,gpiopin=" + keepAliveGPIO + ",active_low=\"y\""
+  newLine = "dtoverlay=gpio-poweroff,gpiopin=" + str(keepAliveGPIO) + ",active_low=\"y\""
   filepath = "/boot/config.txt"
   file = open(filepath, "r")
   configDone = False
