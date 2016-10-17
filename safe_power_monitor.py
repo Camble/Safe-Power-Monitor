@@ -4,12 +4,13 @@
 # version: 1.0a
 # name: Safe-Power-Monitor - A utility to compliment the Safe Shutdown Switch for the Gameboy Zero project
 # description: A GPIO monitor with graceful shutdown capability and video warning overlays
-# source: 
+# source: https://github.com/Camble/Safe-Power-Monitor
 
 import RPi.GPIO as GPIO
 import os
 import sys
 import time
+from shutil import copyfile
 
 AdafruitPowerBoost  = True # Set this to False if using a generic power booster/charger module ie. a "BangGood" or "GearBest" Module
 
@@ -24,7 +25,7 @@ powerTimeout        = 1    # How long in seconds before acting on power switch
 
 videoAlpha          = 180  # Alpha transparency for overlaid videos
 
-videoPlayer         = "/usr/bin/omxplayer --no-osd --layer 999999"   # Path to video player and switches for overlay layer
+videoPlayer         = "/usr/bin/omxplayer --no-osd --layer 999999"    # Path to video player and switches for overlay layer
 shutdownVideo       = "~/Safe-Power-Monitor/lowbattshutdown.mp4"      # Use no spaces or non-alphanum characters
 lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Use no spaces or non-alphanum characters
 
@@ -126,7 +127,8 @@ def main():
 
   # Check /boot/config.txt for dtoverlay line, and add it if required
   newLine = "dtoverlay=gpio-poweroff,gpiopin=" + keepAliveGPIO + ",active_low=\"y\""
-  file = open("/boot/config,txt", "r")
+  filepath = "/boot/config.txt"
+  file = open(filepath, "r")
   configDone = False
 
   # Read each line in /boot/config.txt, stop if newLine is found
@@ -141,11 +143,13 @@ def main():
 
   # If newLine does not exist, add it
   if configDone is False:
+    # Backup config.txt first!
+    copyfile(filepath, filepath + ".bak")
+    # Write the new line
     file = open(filepath, "a")
     file.write("\n" + newLine)
     configDone = True
     file.close()
-    os.system("sudo reboot")
 
   # Configure GPIO mode
   GPIO.setmode(GPIO.BCM)
