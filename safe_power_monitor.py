@@ -47,16 +47,16 @@ class GpioWatcher():
     # Create a threaded event listener
     try:
       GPIO.remove_event_detect(self.pin)
-      GPIO.add_event_detect(self.pin, self.edge, callback=self.Callback, bouncetime=300)
+      GPIO.add_event_detect(self.pin, self.edge, callback=self.callback, bouncetime=300)
 
     except KeyboardInterrupt:
       GPIO.cleanup()
 
     # If the pin is already triggered, perform the callback
     if GPIO.input(self.pin) is trigger:
-      Callback()
+      callback()
 
-  def Callback():
+  def callback():
     print "GPIO Pin " + self.pin + " was triggered!"
 
   pin      = None
@@ -65,7 +65,7 @@ class GpioWatcher():
   edge     = None
 
 class PowerWatcher(GpioWatcher):
-  def Callback():
+  def callback():
     for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
       time.sleep(sampleRate)
 
@@ -86,7 +86,7 @@ class PowerWatcher(GpioWatcher):
     sys.exit(0)
 
 class BatteryWatcher(GpioWatcher):
-  def Callback(channel):
+  def callback(channel):
     # Checking for LED bounce for the duration of the battery timeout
     for bounceSample in range(1, int(round(batteryTimeout / sampleRate))):
       time.sleep(sampleRate)
@@ -121,7 +121,7 @@ class BatteryWatcher(GpioWatcher):
       GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=lowBattery, bouncetime=300)
       
       # If the battery is low, continue to monitor to ensure safe shutdown after the timeout period
-      self.Callback()
+      self.callback()
 
 def main():
 
