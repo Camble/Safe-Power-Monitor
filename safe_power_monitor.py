@@ -74,7 +74,7 @@ class PowerWatcher(GpioWatcher):
 
   if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
     # If the power switch is placed in the off position with no bounce, shutdown
-    os.system(self.action)
+    os.system("sudo shutdown -h now")
     try:
        sys.stdout.close()
     except:
