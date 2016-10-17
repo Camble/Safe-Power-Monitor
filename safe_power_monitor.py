@@ -150,6 +150,7 @@ def main():
     file.write("\n" + newLine)
     configDone = True
     file.close()
+    os.system("sudo reboot")
 
   # Configure GPIO mode
   GPIO.setmode(GPIO.BCM)
