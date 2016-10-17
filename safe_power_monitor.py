@@ -129,19 +129,22 @@ def main():
   file = open("/boot/config,txt", "r")
   configDone = False
 
-  # Check /boot/config.txt for dtoverlay line
-  while configDone is False:
-    for line in file:
-      if line == newLine:
-        configDone = True
-        file.Close()
-        break
-
-      # The line does not exist, add it
-      file = open("/boot/config,txt", "w")
-      file.Write(newLine)
+  # Read each line in /boot/config.txt, stop if newLine is found
+  line = file.readline()
+  while line:
+    if line.rstrip("\n") == newLine:
       configDone = True
-      file.Close()
+      break
+    else:
+      line = file.readline()
+  file.close()
+
+  # If newLine does not exist, add it
+  if configDone is False:
+    file = open(filepath, "a")
+    file.write("\n" + newLine)
+    configDone = True
+    file.close()
 
   # Configure GPIO mode
   GPIO.setmode(GPIO.BCM)
