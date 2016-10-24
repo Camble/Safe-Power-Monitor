@@ -29,7 +29,7 @@ You will need to connect the PI Zero to Wifi and from another computer on the sa
 ssh pi@retropie.local
 ```
 
-Default password is 'raspberry'. At the command prompt, edit the /boot/config.txt file:
+Default password is 'raspberry'.
 
 Copy the Safe Power Monitor script and video assets with the following command:
 
@@ -37,7 +37,7 @@ Copy the Safe Power Monitor script and video assets with the following command:
 cd ~;git clone https://github.com/Camble/Safe-Power-Monitor.git
 ```
 
-Now, launch the script and test that it's working properly
+Now, launch the script and test that it's working properly. At this point, your /boot/config.txt will be amended automatically (if required).
 ```
 python ~/Safe-Power-Monitor/safe_power_monitor.py
 ```
@@ -47,6 +47,7 @@ Once you are satified that the monitor behaves properly, add it to the startup p
 ```
 echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_power_monitor.py" >> mycron; crontab mycron;rm mycron
 ```
+
 
 Keeping Up-to-Date
 ------------------
