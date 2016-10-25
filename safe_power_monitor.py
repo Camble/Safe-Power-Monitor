@@ -18,7 +18,6 @@ powerGPIO           = 27   # GPIO BCM 27 / Physical Pin 13
 batteryGPIO         = 17   # GPIO BCM 17 / Physical Pin 11
 keepAliveGPIO       = 22   # GPIO BCM 22 / Physical Pin 15
 
-checksPerSecond     = 4    # How often to check GPIO pins (higher values *may* impact performance and battery life)
 sampleRate          = 0.1  # tenth of a second
 batteryTimeout      = 10   # How long in seconds before acting on low battery
 powerTimeout        = 1    # How long in seconds before acting on power switch
@@ -96,7 +95,7 @@ class BatteryWatcher(GpioWatcher):
     
     global playerFlag   
     while playerFlag is 1:
-      time.sleep(500)
+      time.sleep(1)
        
     # If the LED is a solid condition, there will be no bounce. Launch shutdown video and then gracefully shutdown
     if bounceSample is int(round(batteryTimeout / sampleRate)) - 1:
@@ -176,8 +175,7 @@ def main():
 main()
 
 # Wait for GPIO events
-delay = 1000/checksPerSecond
 while True:
-  time.sleep(delay)
+  time.sleep(1)
 
 GPIO.cleanup()
