@@ -162,13 +162,14 @@ def main():
       try:
         file = open(filepath, "a")
         file.write("\n" + newLine)
+        file.close()
         configDone = True
+        log(83, "Successfully amended /boot/config.txt. Rebooting...")
+        os.system("sudo reboot")
       except:
         log(87, "Could not write to /boot/config.txt. Please amend manually.")
       finally:
         file.close()
-        log(83, "Successfully amended /boot/config.txt. Rebooting...")
-        os.system("sudo reboot")
 
     except:
       log(86, "Backup failed. Write aborted. Please amend /boot/config.txt manually.")
