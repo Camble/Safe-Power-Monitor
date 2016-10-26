@@ -65,7 +65,7 @@ class GpioWatcher():
 
   def callbackFunc():
     print "GPIO Pin " + pin + " was triggered!"
-    log(01, "GPIO Pin " + pin + " was triggered!")
+    log(11, "GPIO Pin " + pin + " was triggered!")
 
 class PowerWatcher(GpioWatcher):
   def callbackFunc():
