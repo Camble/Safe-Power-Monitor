@@ -16,7 +16,7 @@ from shutil import copyfile
 AdafruitPowerBoost  = True # Set this to False if using a generic power booster/charger module ie. a "BangGood" or "GearBest" Module
 
 powerGPIO           = 27   # GPIO BCM 27 / Physical Pin 13
-batteryGPIO         = 17   # GPIO BCM 17 / Physical Pin 11
+batteryGPIO         = 17   # GPIO BCM 17 / Physical Pin 11 (Set to None if not required)
 keepAliveGPIO       = 22   # GPIO BCM 22 / Physical Pin 15
 
 sampleRate          = 0.1  # tenth of a second
@@ -194,7 +194,8 @@ def main():
 
   # Create some GpioWatchers
   powerWatcher = PowerWatcher(powerGPIO, powerInternalResistor, powerTriggerState)
-  batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
+  if (batteryGPIO is not None):
+    batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
 
   # Run the program
 main()
