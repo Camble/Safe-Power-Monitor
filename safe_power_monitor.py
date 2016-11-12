@@ -7,7 +7,7 @@
 # source: https://github.com/Camble/Safe-Power-Monitor
 
 import RPi.GPIO as GPIO
-import os
+import subprocess
 import sys
 import time
 import datetime
@@ -78,7 +78,8 @@ class PowerWatcher(GpioWatcher):
   if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
     # If the power switch is placed in the off position with no bounce, shutdown
     log(12, "Power switch on pin " + pin + " initiated a shutdown.")
-    os.system("sudo shutdown -h now")
+    subprocess.call(['poweroff'], shell=True, \
+      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
        sys.stdout.close()
     except:
@@ -113,7 +114,8 @@ class BatteryWatcher(GpioWatcher):
         break
       else:
         log(23, "Low battery on pin " + pin + " initiated a shutdown.")
-        os.system("sudo shutdown -h now")
+        subprocess.call(['poweroff'], shell=True, \
+          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         playerFlag = 0
         sys.exit(0)
 
