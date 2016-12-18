@@ -19,9 +19,10 @@ powerGPIO           = 27   # GPIO BCM 27 / Physical Pin 13
 batteryGPIO         = 17   # GPIO BCM 17 / Physical Pin 11 (Set to None if not required)
 keepAliveGPIO       = 22   # GPIO BCM 22 / Physical Pin 15 (/boot/config.txt will be edited automatically)
 
-sampleRate          = 0.1  # tenth of a second
-batteryTimeout      = 10   # How long in seconds before acting on low battery
+sampleRate          = 0.1  # How often to sample a pin before acting
+batteryTimeout      = 5    # How long in seconds before acting on low battery
 powerTimeout        = 1    # How long in seconds before acting on power switch
+numberOfWarnings    = 2    # How many times to warn of low battery before shutting down
 
 videoAlpha          = 180  # Alpha transparency for overlaid videos (0-255)
 
@@ -72,8 +73,9 @@ class PowerWatcher(GpioWatcher):
     for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
       time.sleep(sampleRate)
 
-    if GPIO.input(pin) is trigger:
-      break
+    if GPIO.input(pin) is not trigger:
+      log(13, "Shutdown was cancelled due to switch bounce on pin " + pin + ".")
+      return
 
   if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
     # If the power switch is placed in the off position with no bounce, shutdown
@@ -90,90 +92,84 @@ class PowerWatcher(GpioWatcher):
        pass
     sys.exit(0)
 
-class BatteryWatcher_PB(GpioWatcher):
+class BatteryWatcher(GpioWatcher):
+  warnCount = 0
+  playerFlag = 0
+  previousWarn = None
+  callbackTriggered = 0
+
+  def warn():
+    # If the maximum warning count has been reached, skip it and shutdown
+    if warnCount >= numberOfWarnings:
+      shutdown()
+    else:
+      warnCount += 1
+      playerFlag = 1
+      previousWarn = time.time()
+      log(23, "Low battery warning number " + warnCount + " was displayed.")
+      os.system(videoPlayer + " " + lowalertVideo + " --alpha " + videoAlpha + ";")
+      playerFlag = 0
+
+      # Rebind GPIO event detect after system call (due to a bug with the GPIO library and threaded events)
+      GPIO.remove_event_detect(pin)
+      GPIO.add_event_detect(pin, edge, callback=callbackFunc, bouncetime=300)
+
+  def shutdown():
+    playerFlag = 1
+    os.system(videoPlayer + " " + shutdownVideo + " --alpha " + videoAlpha + ";");
+    playerFlag = 0
+    # Last chance to plug the charger in!
+    if GPIO.input(pin) is not trigger:
+      log(26, "Low battery on pin " + pin + " was cancelled.")
+      return
+    else:
+      log(25, "Low battery on pin " + pin + " initiated a shutdown.")
+      subprocess.call(['poweroff'], shell=True, \
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      sys.exit(0)
+
+  def monitor():
+    if callbackTriggered is 0 or playerFlag is 1:
+      return
+    if previousWarn is None:
+      warn()
+    else:
+      elapsed = time.time() - previousWarn
+      if elapsed >= 300:
+        warnCount = 0
+        playerFlag = 0
+        previousWarn = None
+        callbackTriggered = 0
+      elif elapsed >= 60:
+        warn()
+
+  def callbackFunc():
+    if GPIO.input(pin) is not trigger:
+      callbackTriggered = 0
+      return
+
+    else:
+      callbackTriggered = 1
+      monitor()
+
+class BatteryWatcher_PB(BatteryWatcher):
   def callbackFunc():
     # Checking for LED bounce for the duration of the battery timeout
     for bounceSample in range(1, int(round(batteryTimeout / sampleRate))):
       time.sleep(sampleRate)
-
       if GPIO.input(pin) is not trigger:
          break
 
-    global playerFlag
     while playerFlag is 1:
       time.sleep(1)
 
     # If the LED is a solid condition, there will be no bounce. Launch shutdown video and then gracefully shutdown
     if bounceSample is int(round(batteryTimeout / sampleRate)) - 1:
-
-      playerFlag = 1
-      log(22, "Low battery on pin " + pin + " initiated a shutdown alert.")
-      os.system(videoPlayer + " " + shutdownVideo + " --alpha " + videoAlpha + ";")
-      if GPIO.input(pin) is not trigger
-        log(26, "Low battery on pin " + pin + " was cancelled.")
-        break
-      else:
-        log(23, "Low battery on pin " + pin + " initiated a shutdown.")
-        subprocess.call(['poweroff'], shell=True, \
-          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        playerFlag = 0
-        sys.exit(0)
+      shutdown()
 
     # If the LED is a solid for more than 10% of the timeout, launch the low battery alert
     if bounceSample > int(round(batteryTimeout / sampleRate * 0.1)):
-      playerFlag = 1
-      log(21, "Low battery on pin " + pin + " initiated a warning.")
-      os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + lowalertVideo + " --alpha " + videoAlpha + ";")
-      playerFlag = 0
-
-      # Rebind GPIO event detect after system call (due to a bug with the GPIO library and threaded events)
-      GPIO.remove_event_detect(pin)
-      GPIO.add_event_detect(pin, edge, callback=callbackFunc, bouncetime=300)
-
-      # If the battery is low, continue to monitor to ensure safe shutdown after the timeout period
-      callbackFunc()
-
-class BatteryWatcher_BG(GpioWatcher):
-  def callbackFunc():
-    if GPIO.input(pin) is not trigger:
-       break
-
-    global playCount
-    global playerFlag
-
-    while playCount < 2:
-      time.sleep(1)
-    while playerFlag is 1:
-      time.sleep(1)
-
-    # If the low battery alert has played twice, and enough time has passed, gracefully shutdown.
-    if playCount >= 2:
-      playerFlag = 1
-      log(22, "Low battery on pin " + pin + " initiated a shutdown alert.")
-      os.system(videoPlayer + " " + shutdownVideo + " --alpha " + videoAlpha + ";")
-      if GPIO.input(pin) is not trigger
-        log(26, "Low battery on pin " + pin + " was cancelled.")
-        break
-      else:
-        log(23, "Low battery on pin " + pin + " initiated a shutdown.")
-        subprocess.call(['poweroff'], shell=True, \
-          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        playerFlag = 0
-        sys.exit(0)
-
-    # If batteryGPIO is low, launch the low battery alert
-    if GPIO.input(pin) is 0 and playCount < 2:
-      playerFlag = 1
-      log(21, "Low battery on pin " + pin + " initiated a warning.")
-      os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + lowalertVideo + " --alpha " + videoAlpha + ";")
-      playerFlag = 0
-
-      # Rebind GPIO event detect after system call (due to a bug with the GPIO library and threaded events)
-      GPIO.remove_event_detect(pin)
-      GPIO.add_event_detect(pin, edge, callback=callbackFunc, bouncetime=300)
-
-      # If the battery is low, continue to monitor to ensure safe shutdown after the timeout period
-      callbackFunc()
+      monitor()
 
 def main():
   log(11, "Safe Power Monitor script running.")
@@ -243,13 +239,14 @@ def main():
     if (AdafruitPowerBoost is True):
       batteryWatcher = BatteryWatcher_PB(batteryGPIO, batteryInternalResistor, batteryTriggerState)
     else:
-      batteryWatcher = BatteryWatcher_BG(batteryGPIO, batteryInternalResistor, batteryTriggerState)
+      batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
 
 # Run the program
 main()
 
 # Wait for GPIO events
 while True:
+  batteryWatcher.monitor()
   time.sleep(1)
 
 GPIO.cleanup()
