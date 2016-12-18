@@ -2,8 +2,7 @@
 
 Background
 ----------
-Currently in the GameBoy Zero, the power switch works like a normal On/Off switch. The only problem is when you cut the power, it's kinda hard on the system. There's no clean dismounting of the drives. It's really just like yanking the power out. And that's been known to cause corrupted files and disks.
-
+This power monitor script accompanies the Safe Shutdown PCB by Camble. Compatible with various power supplies, it monitors the power switch and reacts to low battery alerts in the form of video warning(s) and gracefully shutting down to prevent SD card corruption.
 
 Required Hardware and Components
 --------------------------------
