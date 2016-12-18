@@ -1,5 +1,4 @@
 # Safe-Power-Monitor v1.0a by Camble
-based on Popcorn's original GBZ-Power-Monitor
 
 Background
 ----------
@@ -9,7 +8,7 @@ Currently in the GameBoy Zero, the power switch works like a normal On/Off switc
 Required Hardware and Components
 --------------------------------
 - [Raspberry Pi Zero](https://www.raspberrypi.org/products/pi-zero/) (or Model B+, Raspberry Pi 2 and Pi 3)
-- [Adafruit Powerboost 1000C](https://learn.adafruit.com/adafruit-powerboost-1000c-load-share-usb-charge-boost/overview)
+- [Adafruit Powerboost 1000C](https://learn.adafruit.com/adafruit-powerboost-1000c-load-share-usb-charge-boost/overview) or a generic [BangGood/GearBest](http://banggood.com/37V-Liion-Battery-Mini-USB-To-USB-A-Power-Apply-Module-p-928948.html?p=9B1915347037201311DI) power supply module.
 - Safe Shutdown PCB (PowerBoost or BangGood Edition)
 - A mini DPDT slide switch (SK-22H07 included with Safe Shutdown PCB) or an original DMG slide power switch.
 
