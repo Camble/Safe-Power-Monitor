@@ -55,23 +55,13 @@ You can make sure you have the latest updates by issuing this command
 cd ~/Safe-Power-Monitor;git pull origin master
 ```
 
-Video Examples
---------------
-https://www.youtube.com/watch?v=TRkEfD04unk
-Low Battery Warning
-
-https://www.youtube.com/watch?v=nRJ42oSrIg4
-Power Switch test
 
 Links
 -----
-More detail can be found on this thread:
-http://sudomod.com/forum/viewtopic.php?f=8&t=97
-
-Pre-order thread for Safe Shutdown Switch:
+Thread to order Safe Shutdown Switch (PowerBoost edition):
 http://sudomod.com/forum/viewtopic.php?f=3&t=1293
 
-Guide to creating a Safe Shutdown Switch of your own:
-http://sudomod.com/forum/viewtopic.php?f=22&t=1059
+Thread to order Safe Shutdown Switch (BangGood edition):
+http://sudomod.com/forum/viewtopic.php?f=3&t=1706
 
 Feel free to contact me on the Sudomod forums (www.sudomod.com/forum) or on the Sudomod Discord channel (https://discordapp.com/channels/188359728454303744/188359728454303744)
