@@ -29,7 +29,7 @@ videoAlpha          = 180  # Alpha transparency for overlaid videos (0-255)
 videoPlayer         = "/usr/bin/omxplayer --no-osd --layer 999999"    # Path to video player and switches for overlay layer
 shutdownVideo       = "~/Safe-Power-Monitor/lowbattshutdown.mp4"      # Alphanumeric only. No spaces.
 lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanumeric only. No spaces.
-logFile             = "~/Safe-Power-Monitor/log.txt"                  # Alphanumeric only. No spaces.
+logFile             = "log.txt"                  # Alphanumeric only. No spaces.
 
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
