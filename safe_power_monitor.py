@@ -33,7 +33,7 @@ logFile             = "~/Safe-Power-Monitor/log.txt"                  # Alphanum
 
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
-def log(int code, string message):
+def log(code, message):
   file = open(logFile, "a")
   file.write(datetime.datetime.strftime("%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
   file.close()
