@@ -61,25 +61,24 @@ class GpioWatcher(object):
       GPIO.cleanup()
 
     # If the pin is already triggered, perform the callback
-    if GPIO.input(pin) is trigger:
+    if GPIO.input(self.pin) is trigger:
       callbackFunc()
 
   def callbackFunc():
-    print "GPIO Pin " + pin + " was triggered!"
-    log(11, "GPIO Pin " + pin + " was triggered!")
+    log(11, "GPIO Pin " + str(self.pin) + " was triggered!")
 
 class PowerWatcher(GpioWatcher):
   def callbackFunc():
     for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
       time.sleep(sampleRate)
 
-    if GPIO.input(pin) is not trigger:
-      log(13, "Shutdown was cancelled due to switch bounce on pin " + pin + ".")
+    if GPIO.input(self.pin) is not trigger:
+      log(13, "Shutdown was cancelled due to switch bounce on pin " + self.pin + ".")
       return
 
     if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
       # If the power switch is placed in the off position with no bounce, shutdown
-      log(12, "Power switch on pin " + pin + " initiated a shutdown.")
+      log(12, "Power switch on pin " + self.pin + " initiated a shutdown.")
       subprocess.call(['poweroff'], shell=True, \
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       try:
