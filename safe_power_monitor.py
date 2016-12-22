@@ -42,8 +42,11 @@ class GpioWatcher(object):
   def __init__(self, gpio_pin, internal_pull, trigger_state):
     # Configure GPIO pin
     self.pin = gpio_pin
-    self.pull = internal_pull
     self.trigger = trigger_state
+    if internal_pull is GPIO.PUD_DOWN:
+      self.pull = GPIO.PUD_DOWN
+    else:
+      self.pull = GPIO.PUD_UP
 
     # Set edge type for event listener
     if trigger_state is 0:
