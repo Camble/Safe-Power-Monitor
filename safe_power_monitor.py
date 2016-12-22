@@ -54,9 +54,9 @@ class GpioWatcher():
 
     # Create a threaded event listener
     try:
-      GPIO.setup(17, GPIO.IN, pull_up_down=pull)
-      GPIO.remove_event_detect(pin)
-      GPIO.add_event_detect(pin, edge, callback=self.callbackFunc, bouncetime=300)
+      GPIO.setup(int(pin), GPIO.IN, pull_up_down=pull)
+      GPIO.remove_event_detect(int(pin))
+      GPIO.add_event_detect(int(pin), edge, callback=self.callbackFunc, bouncetime=300)
 
     except KeyboardInterrupt:
       GPIO.cleanup()
