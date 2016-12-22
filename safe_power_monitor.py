@@ -35,7 +35,8 @@ logFile             = "log.txt"                  # Alphanumeric only. No spaces.
 
 def log(code, message):
   file = open(logFile, "a")
-  file.write(datetime.datetime.strftime("%Y-%m-%d %H:%M:%S", datetime.datetime.now) + "[" + str(code) + "] " + message + "\n")
+  timestamp = datetime.datetime.now
+  file.write(datetime.datetime.strftime(datetime.datetime(timestamp), "%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
   file.close()
 
 class GpioWatcher():
