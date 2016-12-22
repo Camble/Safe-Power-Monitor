@@ -7,7 +7,6 @@
 # source: https://github.com/Camble/Safe-Power-Monitor
 
 import RPi.GPIO as GPIO
-import io
 import subprocess
 import sys
 import time
@@ -37,7 +36,7 @@ logFile             = "log.txt"                  # Alphanumeric only. No spaces.
 def log(code, message):
   file = open(logFile, "a")
   timestamp = datetime.datetime.now
-  file.write(datetime.datetime.strftime(datetime.datetime(timestamp), "%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
+  file.write(datetime.datetime.strftime(timestamp, "%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
   file.close()
 
 class GpioWatcher():
