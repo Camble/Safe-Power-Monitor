@@ -7,6 +7,7 @@
 # source: https://github.com/Camble/Safe-Power-Monitor
 
 import RPi.GPIO as GPIO
+import io
 import subprocess
 import sys
 import time
