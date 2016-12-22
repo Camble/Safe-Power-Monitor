@@ -245,12 +245,12 @@ def main():
     else:
       batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
 
-  # Wait for GPIO events
-  while True:
-    batteryWatcher.monitor()
-    time.sleep(1)
-
-  GPIO.cleanup()
-
 # Run the program
 main()
+
+# Wait for GPIO events
+while True:
+  batteryWatcher.monitor()
+  time.sleep(1)
+
+GPIO.cleanup()
