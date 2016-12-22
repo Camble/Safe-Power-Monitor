@@ -35,7 +35,7 @@ logFile             = "log.txt"                  # Alphanumeric only. No spaces.
 
 def log(code, message):
   file = open(logFile, "a")
-  file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
+  file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
   file.close()
 
 class GpioWatcher(object):
@@ -76,12 +76,12 @@ class PowerWatcher(GpioWatcher):
       time.sleep(sampleRate)
 
     if GPIO.input(self.pin) is not self.trigger:
-      log(13, "Shutdown was cancelled due to switch bounce on pin " + self.pin + ".")
+      log(13, "Shutdown was cancelled due to switch bounce on pin " + str(self.pin) + ".")
       return
 
     if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
       # If the power switch is placed in the off position with no bounce, shutdown
-      log(12, "Power switch on pin " + self.pin + " initiated a shutdown.")
+      log(12, "Power switch on pin " + str(self.pin) + " initiated a shutdown.")
       subprocess.call(['poweroff'], shell=True, \
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       try:
@@ -124,10 +124,10 @@ class BatteryWatcher(GpioWatcher):
     playerFlag = 0
     # Last chance to plug the charger in!
     if GPIO.input(self.pin) is not trigger:
-      log(26, "Low battery on pin " + pin + " was cancelled.")
+      log(26, "Low battery on pin " + str(self.pin) + " was cancelled.")
       return
     else:
-      log(25, "Low battery on pin " + pin + " initiated a shutdown.")
+      log(25, "Low battery on pin " + str(self.pin) + " initiated a shutdown.")
       subprocess.call(['poweroff'], shell=True, \
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       sys.exit(0)
