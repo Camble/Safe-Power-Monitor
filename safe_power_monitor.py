@@ -67,11 +67,11 @@ class GpioWatcher(object):
     if GPIO.input(self.pin) is self.trigger:
       self.callbackFunc()
 
-  def callbackFunc():
+  def callbackFunc(self):
     log(11, "GPIO Pin " + str(self.pin) + " was triggered!")
 
 class PowerWatcher(GpioWatcher):
-  def callbackFunc():
+  def callbackFunc(self):
     for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
       time.sleep(sampleRate)
 
@@ -102,7 +102,7 @@ class BatteryWatcher(GpioWatcher):
     self.previousWarn = None
     self.callbackTriggered = 0
 
-  def warn():
+  def warn(self):
     # If the maximum warning count has been reached, skip it and shutdown
     if self.warnCount >= numberOfWarnings:
       shutdown()
@@ -118,7 +118,7 @@ class BatteryWatcher(GpioWatcher):
       GPIO.remove_event_detect(self.pin)
       GPIO.add_event_detect(self.pin, self.edge, callback=self.callbackFunc, bouncetime=300)
 
-  def shutdown():
+  def shutdown(self):
     playerFlag = 1
     os.system(videoPlayer + " " + shutdownVideo + " --alpha " + videoAlpha + ";");
     playerFlag = 0
@@ -132,7 +132,7 @@ class BatteryWatcher(GpioWatcher):
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       sys.exit(0)
 
-  def monitor():
+  def monitor(self):
     if self.callbackTriggered is 0 or self.playerFlag is 1:
       return
     if self.previousWarn is None:
@@ -147,7 +147,7 @@ class BatteryWatcher(GpioWatcher):
       elif elapsed >= 60:
         self.warn()
 
-  def callbackFunc():
+  def callbackFunc(self):
     if GPIO.input(self.pin) is not self.trigger:
       self.callbackTriggered = 0
       return
@@ -157,7 +157,7 @@ class BatteryWatcher(GpioWatcher):
       self.monitor()
 
 class BatteryWatcher_PB(BatteryWatcher):
-  def callbackFunc():
+  def callbackFunc(self):
     # Checking for LED bounce for the duration of the battery timeout
     for bounceSample in range(1, int(round(batteryTimeout / sampleRate))):
       time.sleep(sampleRate)
