@@ -39,7 +39,7 @@ def log(code, message):
   file.close()
 
 class GpioWatcher():
-  pin, pull, trigger, edge = None
+  pin = pull = trigger = edge = None
   def __init__(self, gpio_pin, internal_pull, trigger_state):
     # Configure GPIO pin
     pin = gpio_pin
@@ -77,20 +77,20 @@ class PowerWatcher(GpioWatcher):
       log(13, "Shutdown was cancelled due to switch bounce on pin " + pin + ".")
       return
 
-  if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
-    # If the power switch is placed in the off position with no bounce, shutdown
-    log(12, "Power switch on pin " + pin + " initiated a shutdown.")
-    subprocess.call(['poweroff'], shell=True, \
-      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    try:
-       sys.stdout.close()
-    except:
-       pass
-    try:
-       sys.stderr.close()
-    except:
-       pass
-    sys.exit(0)
+    if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
+      # If the power switch is placed in the off position with no bounce, shutdown
+      log(12, "Power switch on pin " + pin + " initiated a shutdown.")
+      subprocess.call(['poweroff'], shell=True, \
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      try:
+         sys.stdout.close()
+      except:
+         pass
+      try:
+         sys.stderr.close()
+      except:
+         pass
+      sys.exit(0)
 
 class BatteryWatcher(GpioWatcher):
   warnCount = 0
