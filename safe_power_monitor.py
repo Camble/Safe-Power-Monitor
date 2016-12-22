@@ -38,7 +38,7 @@ def log(code, message):
   file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
   file.close()
 
-class GpioWatcher():
+class GpioWatcher(object):
   def __init__(self, gpio_pin, internal_pull, trigger_state):
     # Configure GPIO pin
     self.pin = gpio_pin
@@ -54,7 +54,7 @@ class GpioWatcher():
     # Create a threaded event listener
     try:
       GPIO.setup(self.pin, GPIO.IN, pull_up_down=self.pull)
-      GPIO.remove_event_detect(pin)
+      GPIO.remove_event_detect(self.pin)
       GPIO.add_event_detect(self.pin, self.edge, callback=self.callbackFunc, bouncetime=300)
 
     except KeyboardInterrupt:
