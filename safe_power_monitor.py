@@ -72,7 +72,7 @@ class PowerWatcher(GpioWatcher):
     for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
       time.sleep(sampleRate)
 
-    if GPIO.input(self.pin) is not trigger:
+    if GPIO.input(self.pin) is not self.trigger:
       log(13, "Shutdown was cancelled due to switch bounce on pin " + self.pin + ".")
       return
 
@@ -92,33 +92,35 @@ class PowerWatcher(GpioWatcher):
       sys.exit(0)
 
 class BatteryWatcher(GpioWatcher):
-  warnCount = 0
-  playerFlag = 0
-  previousWarn = None
-  callbackTriggered = 0
+  def __init__(self):
+    GpioWatcher.___init___(self)
+    self.warnCount = 0
+    self.playerFlag = 0
+    self.previousWarn = None
+    self.callbackTriggered = 0
 
   def warn():
     # If the maximum warning count has been reached, skip it and shutdown
-    if warnCount >= numberOfWarnings:
+    if self.warnCount >= numberOfWarnings:
       shutdown()
     else:
-      warnCount += 1
-      playerFlag = 1
-      previousWarn = time.time()
+      self.warnCount += 1
+      self.playerFlag = 1
+      self.previousWarn = time.time()
       log(23, "Low battery warning number " + warnCount + " was displayed.")
       os.system(videoPlayer + " " + lowalertVideo + " --alpha " + videoAlpha + ";")
       playerFlag = 0
 
       # Rebind GPIO event detect after system call (due to a bug with the GPIO library and threaded events)
-      GPIO.remove_event_detect(pin)
-      GPIO.add_event_detect(pin, edge, callback=callbackFunc, bouncetime=300)
+      GPIO.remove_event_detect(self.pin)
+      GPIO.add_event_detect(self.pin, self.edge, callback=self.callbackFunc, bouncetime=300)
 
   def shutdown():
     playerFlag = 1
     os.system(videoPlayer + " " + shutdownVideo + " --alpha " + videoAlpha + ";");
     playerFlag = 0
     # Last chance to plug the charger in!
-    if GPIO.input(pin) is not trigger:
+    if GPIO.input(self.pin) is not trigger:
       log(26, "Low battery on pin " + pin + " was cancelled.")
       return
     else:
@@ -128,47 +130,47 @@ class BatteryWatcher(GpioWatcher):
       sys.exit(0)
 
   def monitor():
-    if callbackTriggered is 0 or playerFlag is 1:
+    if self.callbackTriggered is 0 or self.playerFlag is 1:
       return
-    if previousWarn is None:
-      warn()
+    if self.previousWarn is None:
+      self.warn()
     else:
-      elapsed = time.time() - previousWarn
+      elapsed = time.time() - self.previousWarn
       if elapsed >= 300:
-        warnCount = 0
-        playerFlag = 0
-        previousWarn = None
-        callbackTriggered = 0
+        self.warnCount = 0
+        self.playerFlag = 0
+        self.previousWarn = None
+        self.callbackTriggered = 0
       elif elapsed >= 60:
-        warn()
+        self.warn()
 
   def callbackFunc():
-    if GPIO.input(pin) is not trigger:
-      callbackTriggered = 0
+    if GPIO.input(self.pin) is not self.trigger:
+      self.callbackTriggered = 0
       return
 
     else:
-      callbackTriggered = 1
-      monitor()
+      self.callbackTriggered = 1
+      self.monitor()
 
 class BatteryWatcher_PB(BatteryWatcher):
   def callbackFunc():
     # Checking for LED bounce for the duration of the battery timeout
     for bounceSample in range(1, int(round(batteryTimeout / sampleRate))):
       time.sleep(sampleRate)
-      if GPIO.input(pin) is not trigger:
+      if GPIO.input(self.pin) is not self.trigger:
          break
 
-    while playerFlag is 1:
+    while self.playerFlag is 1:
       time.sleep(1)
 
     # If the LED is a solid condition, there will be no bounce. Launch shutdown video and then gracefully shutdown
     if bounceSample is int(round(batteryTimeout / sampleRate)) - 1:
-      shutdown()
+      self.shutdown()
 
     # If the LED is a solid for more than 10% of the timeout, launch the low battery alert
     if bounceSample > int(round(batteryTimeout / sampleRate * 0.1)):
-      monitor()
+      self.monitor()
 
 def main():
   log(11, "Safe Power Monitor script running.")
