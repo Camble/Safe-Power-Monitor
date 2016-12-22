@@ -54,7 +54,7 @@ class GpioWatcher():
 
     # Create a threaded event listener
     try:
-      GPIO.setup(pin, GPIO.IN, pull_up_down=pull)
+      GPIO.setup(17, GPIO.IN, pull_up_down=pull)
       GPIO.remove_event_detect(pin)
       GPIO.add_event_detect(pin, edge, callback=self.callbackFunc, bouncetime=300)
 
