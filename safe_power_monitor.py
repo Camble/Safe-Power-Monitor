@@ -92,7 +92,7 @@ class PowerWatcher(GpioWatcher):
       sys.exit(0)
 
 class BatteryWatcher(GpioWatcher):
-  def __init__(self):
+  def __init__(self, gpio_pin, internal_pull, trigger_state):
     GpioWatcher.___init___(self)
     self.warnCount = 0
     self.playerFlag = 0
