@@ -39,24 +39,23 @@ def log(code, message):
   file.close()
 
 class GpioWatcher():
-  #pin = pull = trigger = edge = None
   def __init__(self, gpio_pin, internal_pull, trigger_state):
     # Configure GPIO pin
-    pin = gpio_pin
-    pull = internal_pull
-    trigger = trigger_state
+    self.pin = gpio_pin
+    self.pull = internal_pull
+    self.trigger = trigger_state
 
     # Set edge type for event listener
     if trigger_state is 0:
-      edge = GPIO.FALLING
+      self.edge = GPIO.FALLING
     elif trigger_state is 1:
-      edge = GPIO.RISING
+      self.edge = GPIO.RISING
 
     # Create a threaded event listener
     try:
-      GPIO.setup(pin, GPIO.IN, pull_up_down=self.pull)
+      GPIO.setup(self.pin, GPIO.IN, pull_up_down=self.pull)
       GPIO.remove_event_detect(pin)
-      GPIO.add_event_detect(pin, edge, callback=self.callbackFunc, bouncetime=300)
+      GPIO.add_event_detect(self.pin, self.edge, callback=self.callbackFunc, bouncetime=300)
 
     except KeyboardInterrupt:
       GPIO.cleanup()
