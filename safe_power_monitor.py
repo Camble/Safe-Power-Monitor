@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 import subprocess
 import sys
 import time
-import datetime
+import datetime.datetime
 from shutil import copyfile
 
 AdafruitPowerBoost  = True # Set this to False if using a generic power booster/charger module ie. a "BangGood" or "GearBest" Module
@@ -35,7 +35,7 @@ logFile             = "log.txt"                  # Alphanumeric only. No spaces.
 
 def log(code, message):
   file = open(logFile, "a")
-  file.write(datetime.datetime.strftime("%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
+  file.write(datetime.strftime(datetime.now,"%Y-%m-%d %H:%M:%S") + "[" + str(code) + "] " + message + "\n")
   file.close()
 
 class GpioWatcher():
