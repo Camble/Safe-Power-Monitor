@@ -31,7 +31,7 @@ videoAlpha          = 180  # Alpha transparency for overlaid videos (0-255)
 videoPlayer         = "/usr/bin/omxplayer --no-osd --layer 999999"    # Path to video player and switches for overlay layer
 shutdownVideo       = "~/Safe-Power-Monitor/lowbattshutdown.mp4"      # Alphanumeric only. No spaces.
 lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanumeric only. No spaces.
-logFile             = "log.txt"                  # Alphanumeric only. No spaces.
+logFile             = "~/Safe-Power-Monitor/log.txt"                  # Alphanumeric only. No spaces.
 
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
@@ -221,12 +221,13 @@ def main():
 
         subprocess.call(['sudo cp /tmp/config.txt /boot/config.txt'], shell=True)
         subprocess.call(['sudo rm /tmp/config.txt'], shell=True)
-
-        configDone = True
         log(83, "Successfully amended /boot/config.txt. Rebooting...")
         subprocess.call(['sudo reboot'], shell=True)
+        time.sleep(5)
+
       except:
         log(87, "Could not write to /boot/config.txt. Please amend manually.")
+
       finally:
         file.close()
 
