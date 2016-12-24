@@ -35,19 +35,8 @@ Copy the Safe Power Monitor script and video assets with the following command:
 cd ~;git clone https://github.com/Camble/Safe-Power-Monitor.git
 ```
 
-Now, launch the script and test that it's working properly. At this point, your /boot/config.txt will be amended automatically (if required).
-```
-python ~/Safe-Power-Monitor/safe_power_monitor.py
-```
-
-Once you are satified that the monitor behaves properly, add it to the startup process to complete the installation and then reboot.
-
-```
-echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_power_monitor.py" >> mycron; crontab mycron;rm mycron
-```
-
-Automatic /boot/config.txt editing
----------------------------------
+Editing /boot/config.txt automatically
+--------------------------------------
 Each time the script is run, it checks your /boot/config.txt for the keep-alive line. If it does not exist, it will add it and reboot.
 
 For safety, the script will create a backup first. If for whatever reason, it cannot create a backup, an entry will be written in the log advising you make the amendment manually.
@@ -67,6 +56,34 @@ Below is an extract from the log file.
 2016-12-24 13:15:16 [11] Safe Power Monitor script running.
 2016-12-24 13:15:16 [80] Reading /boot/config.txt took 0.2362 seconds.
 2016-12-24 13:15:16 [30] Adafruit PowerBoost is selected.
+```
+
+Editing /boot/config.txt manually
+---------------------------------
+Carry out the following additional steps before 
+```
+sudo nano /boot/config.txt
+```
+
+Add the following line:
+
+```
+dtoverlay=gpio-poweroff,gpiopin=22,active_low="y"
+```
+Running the script
+------------------
+
+If you are happy you have configured the script correctly, add it to the startup process to complete the installation.
+Note: if you chose to let the script alter /boot/config.txt for you, it will reboot at this point.
+
+```
+echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_power_monitor.py" >> mycron; crontab mycron;rm mycron
+```
+
+If you would prefer to test the script first, run it once without adding to startup.
+Note: if you chose to let the script alter /boot/config.txt for you, it will still reboot at this point, but will not run on startup.
+```
+python ~/Safe-Power-Monitor/safe_power_monitor.py
 ```
 
 Keeping Up-to-Date
