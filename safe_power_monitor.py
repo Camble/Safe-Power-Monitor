@@ -34,7 +34,7 @@ lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanum
 
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
-global logFile = ""
+logFile = ""
 
 def log(code, message):
   file = open(logFile, "a")
