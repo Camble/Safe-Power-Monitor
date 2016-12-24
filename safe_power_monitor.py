@@ -203,7 +203,7 @@ def main():
   file.close()
   time_end = datetime.now()
   diff = time_end - time_start
-  log(101, "Reading /boot/config.txt took " + str(diff.seconds) + "." + str(diff.microseconds) + " seconds.")
+  log(01, "Reading /boot/config.txt took " + str(diff.seconds) + "." + str(diff.microseconds) + " seconds.")
 
   # If newLine does not exist, add it
   if configDone is False:
