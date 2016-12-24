@@ -180,6 +180,7 @@ class BatteryWatcher_PB(BatteryWatcher):
 
 def main():
   # If the log file does not exist, create it
+  global logFile
   logFile = os.getenv('HOME') + "/log.txt"
   if os.path.isfile(logFile) is False:
     open(logFile, "w")
