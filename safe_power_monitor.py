@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 import subprocess
 import sys
 import time
-from os import path
+import os
 from datetime import timedelta
 from datetime import datetime
 from shutil import copyfile
@@ -179,7 +179,7 @@ class BatteryWatcher_PB(BatteryWatcher):
 def main():
   # If the log file does not exist, create it
   logFile = os.getenv('HOME') + "/log.txt"
-  if path.isfile(logFile) is False:
+  if os.path.isfile(logFile) is False:
     open(logFile, "w")
 
   log(11, "Safe Power Monitor script running.")
