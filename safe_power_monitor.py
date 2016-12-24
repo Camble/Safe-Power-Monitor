@@ -212,7 +212,7 @@ def main():
     # Backup config.txt first!
     try:
       subprocess.call(['sudo cp /boot/config.txt /boot/config.bak'], shell=True)
-      log(82, "Backup successfully created /boot/config.txt.bak")
+      log(82, "Backup successfully created /boot/config.bak")
 
       # Write the new line
       try:
