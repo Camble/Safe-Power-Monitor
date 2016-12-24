@@ -209,7 +209,7 @@ def main():
     log(81, "No dtoverlay line found for keep-alive in /boot/config.txt")
     # Backup config.txt first!
     try:
-      copyfile(filepath, filepath + ".bak")
+      subprocess.call(['sudo cp /boot/config.txt /boot/config.bak'], shell=True)
       log(82, "Backup successfully created /boot/config.txt.bak")
 
       # Write the new line
