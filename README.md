@@ -79,6 +79,7 @@ Running the script
 ------------------
 
 If you are happy you have configured the script correctly, add it to the startup process to complete the installation.
+
 Note: if you chose to let the script alter /boot/config.txt for you, it will reboot at this point.
 
 ```
@@ -86,6 +87,7 @@ echo "@reboot /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_powe
 ```
 
 If you would prefer to test the script first, run it once without adding to startup.
+
 Note: if you chose to let the script alter /boot/config.txt for you, it will still reboot at this point, but will not run on startup.
 ```
 python ~/Safe-Power-Monitor/safe_power_monitor.py
