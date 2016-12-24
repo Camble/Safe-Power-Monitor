@@ -73,7 +73,7 @@ class GpioWatcher(object):
       self.callbackFunc()
 
   def callbackFunc(self, channel):
-    log(11, "GPIO Pin " + str(self.pin) + " was triggered!")
+    log(99, "GPIO Pin " + str(self.pin) + " was triggered!")
 
 class PowerWatcher(GpioWatcher):
   def callbackFunc(self, channel):
@@ -204,7 +204,7 @@ def main():
   file.close()
   time_end = datetime.now()
   diff = time_end - time_start
-  log(01, "Reading /boot/config.txt took " + str(diff.seconds) + "." + str(diff.microseconds) + " seconds.")
+  log(80, "Reading /boot/config.txt took " + str(diff.seconds) + "." + str(diff.microseconds) + " seconds.")
 
   # If newLine does not exist, add it
   if configDone is False:
