@@ -214,7 +214,7 @@ def main():
 
       # Write the new line
       try:
-        with open("'/boot/config.txt", "r") as f:
+        with open("/boot/config.txt", "r") as f:
           s = f.read() + "\n" + newLine
           with open("/tmp/config.txt", "w") as outf:
             outf.write(s)
