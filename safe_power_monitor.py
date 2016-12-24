@@ -16,12 +16,13 @@ from datetime import datetime
 from shutil import copyfile
 
 AdafruitPowerBoost  = True # Set this to False if using a generic power booster/charger module ie. a "BangGood" or "GearBest" Module
+DebugLog            = True # Set this to False to disable writing to the log file
 
 powerGPIO           = 27   # GPIO BCM 27 / Physical Pin 13
 batteryGPIO         = 17   # GPIO BCM 17 / Physical Pin 11 (Set to None if not required)
 keepAliveGPIO       = 22   # GPIO BCM 22 / Physical Pin 15 (/boot/config.txt will be edited automatically)
 
-sampleRate          = 0.1  # How often to sample a pin before acting
+sampleRate          = 0.1  # How often to sample the PowerBoost low battery pin
 batteryTimeout      = 5    # How long in seconds before acting on low battery
 powerTimeout        = 1    # How long in seconds before acting on power switch
 numberOfWarnings    = 2    # How many times to warn of low battery before shutting down
@@ -35,13 +36,14 @@ lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanum
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
 def log(code, message):
-  # If the log file doesn't exist, create it
-  if os.path.isfile(logFile) is False:
-    open(logFile, "w")
+  if DebugLog is True:
+    # If the log file doesn't exist, create it
+    if os.path.isfile(logFile) is False:
+      open(logFile, "w")
 
-  file = open(logFile, "a")
-  file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
-  file.close()
+    file = open(logFile, "a")
+    file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
+    file.close()
 
 class GpioWatcher(object):
   def __init__(self, gpio_pin, internal_pull, trigger_state):
