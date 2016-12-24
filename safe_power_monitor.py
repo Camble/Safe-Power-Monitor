@@ -82,8 +82,8 @@ class PowerWatcher(GpioWatcher):
     if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
       # If the power switch is placed in the off position with no bounce, shutdown
       log(12, "Power switch on pin " + str(self.pin) + " initiated a shutdown.")
-      subprocess.call(['sudo shutdown -h now'], shell=True, ststdout=subprocess.PIPE, stderr=subprocess.PIPE)
-      subprocess.call(['poweroff --poweroff'], shell=True, ststdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      subprocess.call(['sudo shutdown -h now'], shell=True)
+      subprocess.call(['poweroff'], shell=True)
       try:
          sys.stdout.close()
       except:
@@ -128,8 +128,8 @@ class BatteryWatcher(GpioWatcher):
       return
     else:
       log(25, "Low battery on pin " + str(self.pin) + " initiated a shutdown.")
-      subprocess.call(['sudo shutdown -h now'], shell=True, ststdout=subprocess.PIPE, stderr=subprocess.PIPE)
-      subprocess.call(['poweroff --poweroff'], shell=True, ststdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      subprocess.call(['sudo shutdown -h now'], shell=True)
+      subprocess.call(['poweroff --poweroff'], shell=True)
       sys.exit(0)
 
   def monitor(self):
