@@ -35,6 +35,10 @@ lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanum
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
 def log(code, message):
+  # If the log file doesn't exist, create it
+  if os.path.isfile(logFile) is False:
+    open(logFile, "w")
+
   file = open(logFile, "a")
   file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
   file.close()
@@ -177,11 +181,8 @@ class BatteryWatcher_PB(BatteryWatcher):
       self.monitor()
 
 def main():
-  # If the log file does not exist, create it
   global logFile
   logFile = os.getenv('HOME') + "/Safe-Power-Monitor/log.txt"
-  if os.path.isfile(logFile) is False:
-    open(logFile, "w")
 
   log(11, "Safe Power Monitor script running.")
 
