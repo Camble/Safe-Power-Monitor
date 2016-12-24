@@ -59,7 +59,7 @@ class GpioWatcher(object):
       GPIO.setup(self.pin, GPIO.IN, pull_up_down=self.pull)
       GPIO.remove_event_detect(self.pin)
       cb = lambda self: self.callbackFunc(self)
-      GPIO.add_event_detect(self.pin, self.edge, callback=self.callbackFunc, bouncetime=300)
+      GPIO.add_event_detect(self.pin, self.edge, callback=cb, bouncetime=300)
 
     except KeyboardInterrupt:
       GPIO.cleanup()
