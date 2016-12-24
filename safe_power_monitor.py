@@ -214,9 +214,13 @@ def main():
 
       # Write the new line
       try:
-        file = open(filepath, "a")
-        file.write("\n" + newLine)
-        file.close()
+        with open("'/boot/config.txt", "r") as f:
+          s = f.read() + "\n" + newLine
+          with open("/tmp/config.txt", "w") as outf:
+            outf.write(s)
+
+        os.system("sudo mv /tmp/config.txt /boot/config.txt")
+
         configDone = True
         log(83, "Successfully amended /boot/config.txt. Rebooting...")
         os.system("sudo reboot")
