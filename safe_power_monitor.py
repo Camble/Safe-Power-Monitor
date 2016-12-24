@@ -31,11 +31,11 @@ videoAlpha          = 180  # Alpha transparency for overlaid videos (0-255)
 videoPlayer         = "/usr/bin/omxplayer --no-osd --layer 999999"    # Path to video player and switches for overlay layer
 shutdownVideo       = "~/Safe-Power-Monitor/lowbattshutdown.mp4"      # Alphanumeric only. No spaces.
 lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanumeric only. No spaces.
+global logFile
 
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
 def log(code, message):
-  global logFile
   file = open(logFile, "a")
   file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
   file.close()
