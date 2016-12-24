@@ -179,7 +179,7 @@ class BatteryWatcher_PB(BatteryWatcher):
 
 def main():
   # If the log file does not exist, create it
-  if os.path.isfile(logFile) is False:
+  if path.isfile(logFile) is False:
     open(logFile, "w")
 
   log(11, "Safe Power Monitor script running.")
