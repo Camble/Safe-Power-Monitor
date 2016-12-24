@@ -223,6 +223,7 @@ def main():
         subprocess.call(['sudo cp /tmp/config.txt /boot/config.txt'], shell=True)
         subprocess.call(['sudo rm /tmp/config.txt'], shell=True)
         log(83, "Successfully amended /boot/config.txt. Rebooting...")
+        print("Successfully amended /boot/config.txt. Rebooting...")
         subprocess.call(['sudo reboot'], shell=True)
         time.sleep(5)
 
