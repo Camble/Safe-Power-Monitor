@@ -45,6 +45,19 @@ Once you are satified that the monitor behaves properly, add it to the startup p
 ```
 echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_power_monitor.py" >> mycron; crontab mycron;rm mycron
 ```
+Automatic /boot/config.txt ediing
+---------------------------------
+
+Each time the script is run, it checks your /boot/config.txt for the keep-alive line. If it does not exist, it will add it and reboot. Below is an extract from the log file.
+
+2016-12-24 13:15:02 [11] Safe Power Monitor script running.
+2016-12-24 13:15:02 [80] Reading /boot/config.txt took 0.3671 seconds.
+2016-12-24 13:15:02 [81] No dtoverlay line found for keep-alive in /boot/config.txt
+2016-12-24 13:15:02 [82] Backup successfully created /boot/config.txt.bak
+2016-12-24 13:15:02 [83] Successfully amended /boot/config.txt. Rebooting...
+2016-12-24 13:15:16 [11] Safe Power Monitor script running.
+2016-12-24 13:15:16 [80] Reading /boot/config.txt took 0.2362 seconds.
+2016-12-24 13:15:16 [30] Adafruit PowerBoost is selected.
 
 
 Keeping Up-to-Date
