@@ -34,6 +34,11 @@ Copy the Safe Power Monitor script and video assets with the following command:
 ```
 cd ~;git clone https://github.com/Camble/Safe-Power-Monitor.git
 ```
+If you are using a generic power supply, or want to change the GPIO pin numbers, edit safe_power_monitor.py:
+```
+sudo nano ~/Safe-Power-Monitor/safe_power_monitor.py
+```
+Make your changes to the variables at the top of the script and press Ctrl+X to quit. Press 'Y' to save.
 
 Editing /boot/config.txt automatically
 --------------------------------------
@@ -43,7 +48,7 @@ For safety, the script will create a backup first. If for whatever reason, it ca
 
 The script will make a temporary copy (/tmp/config.txt) and append the keep-alive line to it. This will then be copied back over /boot/config.txt.
 
-If you would prefer to make the change manually, do so before running the script and everything will continue as normal.
+If you would prefer to make the change manually, follow the steps below. If not, skip to "Running the script"
 
 Below is an extract from the log file.
 
@@ -58,18 +63,18 @@ Below is an extract from the log file.
 2016-12-24 13:15:16 [30] Adafruit PowerBoost is selected.
 ```
 
-Editing /boot/config.txt manually
+Editing /boot/config.txt manually (optional)
 ---------------------------------
-Carry out the following additional steps before 
+At the command line, type:
 ```
 sudo nano /boot/config.txt
 ```
-
 Add the following line:
-
 ```
 dtoverlay=gpio-poweroff,gpiopin=22,active_low="y"
 ```
+Press Ctrl+X to exit, and press 'Y' to save.
+
 Running the script
 ------------------
 
