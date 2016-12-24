@@ -179,7 +179,7 @@ class BatteryWatcher_PB(BatteryWatcher):
 def main():
   log(11, "Safe Power Monitor script running.")
 
-  time_start = datatime.now()
+  time_start = datetime.now()
   # Check /boot/config.txt for dtoverlay line, and add it if required
   newLine = "dtoverlay=gpio-poweroff,gpiopin=" + str(keepAliveGPIO) + ",active_low=\"y\""
   filepath = "/boot/config.txt"
@@ -195,10 +195,10 @@ def main():
     else:
       line = file.readline()
   file.close()
-  time_end = datatime.now()
+  time_end = datetime.now()
   diff = time_end - time_start
   log(101, "Reading /boot/config.txt took " + diff.seconds + "." + diff.microseconds + " seconds.")
-  
+
   # If newLine does not exist, add it
   if configDone is False:
     log(81, "No dtoverlay line found for keep-alive in /boot/config.txt")
