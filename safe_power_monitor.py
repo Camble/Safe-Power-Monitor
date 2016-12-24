@@ -71,6 +71,7 @@ class GpioWatcher(object):
     log(11, "GPIO Pin " + str(self.pin) + " was triggered!")
 
 class PowerWatcher(GpioWatcher):
+  @staticmethod
   def callbackFunc(self):
     for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
       time.sleep(sampleRate)
@@ -147,6 +148,7 @@ class BatteryWatcher(GpioWatcher):
       elif elapsed >= 60:
         self.warn()
 
+  @staticmethod
   def callbackFunc(self):
     if GPIO.input(self.pin) is not self.trigger:
       self.callbackTriggered = 0
@@ -157,6 +159,7 @@ class BatteryWatcher(GpioWatcher):
       self.monitor()
 
 class BatteryWatcher_PB(BatteryWatcher):
+  @staticmethod
   def callbackFunc(self):
     # Checking for LED bounce for the duration of the battery timeout
     for bounceSample in range(1, int(round(batteryTimeout / sampleRate))):
