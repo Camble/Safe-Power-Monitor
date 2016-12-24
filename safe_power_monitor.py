@@ -82,8 +82,9 @@ class PowerWatcher(GpioWatcher):
     if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
       # If the power switch is placed in the off position with no bounce, shutdown
       log(12, "Power switch on pin " + str(self.pin) + " initiated a shutdown.")
-      subprocess.call(['poweroff'], shell=True, \
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      os.system("sudo shutdown -h now")
+      #subprocess.call(['poweroff'], shell=True, \
+      #  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       try:
          sys.stdout.close()
       except:
