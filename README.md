@@ -1,8 +1,10 @@
-# Safe-Power-Monitor v1.0a by Camble
+# Safe-Power-Monitor 0.9 by Camble
 
 Background
 ----------
 This power monitor script accompanies the Safe Shutdown PCB by Camble. Compatible with various power supplies, it monitors the power switch and reacts to low battery alerts in the form of video warning(s) and gracefully shutting down to prevent SD card corruption.
+
+The script can log events to a log file to help with troubleshooting and is on by default.
 
 Required Hardware and Components
 --------------------------------
