@@ -54,7 +54,7 @@ Each time the script is run, it checks your /boot/config.txt for the keep-alive 
 2016-12-24 13:15:02 [11] Safe Power Monitor script running.
 2016-12-24 13:15:02 [80] Reading /boot/config.txt took 0.3671 seconds.
 2016-12-24 13:15:02 [81] No dtoverlay line found for keep-alive in /boot/config.txt
-2016-12-24 13:15:02 [82] Backup successfully created /boot/config.txt.bak
+2016-12-24 13:15:02 [82] Backup successfully created /boot/config.bak
 2016-12-24 13:15:02 [83] Successfully amended /boot/config.txt. Rebooting...
 2016-12-24 13:15:16 [11] Safe Power Monitor script running.
 2016-12-24 13:15:16 [80] Reading /boot/config.txt took 0.2362 seconds.
