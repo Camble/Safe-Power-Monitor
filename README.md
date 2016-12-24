@@ -45,10 +45,18 @@ Once you are satified that the monitor behaves properly, add it to the startup p
 ```
 echo "@reboot     /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_power_monitor.py" >> mycron; crontab mycron;rm mycron
 ```
-Automatic /boot/config.txt ediing
----------------------------------
 
-Each time the script is run, it checks your /boot/config.txt for the keep-alive line. If it does not exist, it will add it and reboot. Below is an extract from the log file.
+Automatic /boot/config.txt editing
+---------------------------------
+Each time the script is run, it checks your /boot/config.txt for the keep-alive line. If it does not exist, it will add it and reboot.
+
+For safety, the script will create a backup first. If for whatever reason, it cannot create a backup, an entry will be written in the log advising you make the amendment manually.
+
+The script will make a temporary copy (/tmp/config.txt) and append the keep-alive line to it. This will then be copied back over /boot/config.txt.
+
+If you would prefer to make the change manually, do so before running the script and everything will continue as normal.
+
+Below is an extract from the log file.
 
 ```
 2016-12-24 13:15:02 [11] Safe Power Monitor script running.
