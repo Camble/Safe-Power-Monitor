@@ -35,6 +35,7 @@ lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanum
 # ==================== DO NOT CHANGE ANYTHING BELOW THIS LINE ====================
 
 def log(code, message):
+  global logFile
   file = open(logFile, "a")
   file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
   file.close()
