@@ -219,11 +219,12 @@ def main():
           with open("/tmp/config.txt", "w") as outf:
             outf.write(s)
 
-        os.system("sudo mv /tmp/config.txt /boot/config.txt")
+        subprocess.call(['sudo cp /tmp/config.txt /boot/config.txt'], shell=True)
+        subprocess.call(['sudo rm /tmp/config.txt'], shell=True)
 
         configDone = True
         log(83, "Successfully amended /boot/config.txt. Rebooting...")
-        os.system("sudo reboot")
+        subprocess.call(['sudo reboot'], shell=True)
       except:
         log(87, "Could not write to /boot/config.txt. Please amend manually.")
       finally:
