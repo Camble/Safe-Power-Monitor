@@ -207,6 +207,10 @@ def main():
       subprocess.call(['sudo cp /boot/config.txt /boot/config.bak'], shell=True)
       log(82, "Backup successfully created /boot/config.bak")
 
+    except:
+      log(86, "Backup failed. Write aborted. Please amend /boot/config.txt manually.")
+
+    else:
       # Write the new line
       try:
         with open("/boot/config.txt", "r") as f:
@@ -226,9 +230,6 @@ def main():
 
       finally:
         file.close()
-
-    except:
-      log(86, "Backup failed. Write aborted. Please amend /boot/config.txt manually.")
 
   # Configure GPIO mode
   GPIO.setmode(GPIO.BCM)
