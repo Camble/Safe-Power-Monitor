@@ -195,7 +195,7 @@ def readConfig():
   log(80, "Reading /boot/config.txt took " + str(diff.seconds) + "." + str(diff.microseconds) + " seconds.")
   return configDone
 
-def appendCOnfig():
+def appendConfig():
   log(81, "No dtoverlay line found for keep-alive in /boot/config.txt")
   # Backup config.txt first!
   try:
