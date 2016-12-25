@@ -208,6 +208,7 @@ def main():
       log(82, "Backup successfully created /boot/config.bak")
 
     except:
+      print("Backup failed. Write aborted. Please amend /boot/config.txt manually.")
       log(86, "Backup failed. Write aborted. Please amend /boot/config.txt manually.")
 
     else:
@@ -220,12 +221,13 @@ def main():
 
         subprocess.call(['sudo cp /tmp/config.txt /boot/config.txt'], shell=True)
         subprocess.call(['sudo rm /tmp/config.txt'], shell=True)
-        log(83, "Successfully amended /boot/config.txt. Rebooting...")
         print("Successfully amended /boot/config.txt. Rebooting...")
+        log(83, "Successfully amended /boot/config.txt. Rebooting...")
         subprocess.call(['sudo reboot'], shell=True)
         time.sleep(5)
 
       except:
+        print("Could not write to /boot/config.txt. Please amend manually.")
         log(87, "Could not write to /boot/config.txt. Please amend manually.")
 
       finally:
