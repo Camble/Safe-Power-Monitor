@@ -79,27 +79,18 @@ class GpioWatcher(object):
 
 class PowerWatcher(GpioWatcher):
   def callbackFunc(self, channel):
-    for bounceSample in range(1, int(round(powerTimeout / sampleRate))):
-      time.sleep(sampleRate)
-
-    if GPIO.input(self.pin) is not self.trigger:
-      log(13, "Shutdown was cancelled due to switch bounce on pin " + str(self.pin) + ".")
-      return
-
-    if bounceSample is int(round(powerTimeout / sampleRate)) - 1:
-      # If the power switch is placed in the off position with no bounce, shutdown
-      log(12, "Power switch on pin " + str(self.pin) + " initiated a shutdown.")
-      subprocess.call(['sudo shutdown -h now'], shell=True)
-      subprocess.call(['poweroff'], shell=True)
-      try:
-         sys.stdout.close()
-      except:
-         pass
-      try:
-         sys.stderr.close()
-      except:
-         pass
-      sys.exit(0)
+    log(12, "Power switch on pin " + str(self.pin) + " initiated a shutdown.")
+    subprocess.call(['sudo shutdown -h now'], shell=True)
+    subprocess.call(['poweroff'], shell=True)
+    try:
+       sys.stdout.close()
+    except:
+       pass
+    try:
+       sys.stderr.close()
+    except:
+       pass
+    sys.exit(0)
 
 class BatteryWatcher(GpioWatcher):
   def __init__(self, gpio_pin, internal_pull, trigger_state):
