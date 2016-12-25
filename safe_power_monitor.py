@@ -173,7 +173,12 @@ class BatteryWatcher_PB(BatteryWatcher):
     if bounceSample > int(round(batteryTimeout / sampleRate * 0.1)):
       self.monitor()
 
-def readConfig():
+def main():
+  global logFile
+  logFile = os.getenv('HOME') + "/Safe-Power-Monitor/log.txt"
+
+  log(11, "Safe Power Monitor script running.")
+
   time_start = datetime.now()
   # Check /boot/config.txt for dtoverlay line, and add it if required
   newLine = "dtoverlay=gpio-poweroff,gpiopin=" + str(keepAliveGPIO) + ",active_low=\"y\""
@@ -193,47 +198,37 @@ def readConfig():
   time_end = datetime.now()
   diff = time_end - time_start
   log(80, "Reading /boot/config.txt took " + str(diff.seconds) + "." + str(diff.microseconds) + " seconds.")
-  return configDone
-
-def appendCOnfig():
-  log(81, "No dtoverlay line found for keep-alive in /boot/config.txt")
-  # Backup config.txt first!
-  try:
-    subprocess.call(['sudo cp /boot/config.txt /boot/config.bak'], shell=True)
-    log(82, "Backup successfully created /boot/config.bak")
-
-    # Write the new line
-    try:
-      with open("/boot/config.txt", "r") as f:
-        s = f.read() + "\n" + newLine
-        with open("/tmp/config.txt", "w") as outf:
-          outf.write(s)
-
-      subprocess.call(['sudo cp /tmp/config.txt /boot/config.txt'], shell=True)
-      subprocess.call(['sudo rm /tmp/config.txt'], shell=True)
-      log(83, "Successfully amended /boot/config.txt. Rebooting...")
-      print("Successfully amended /boot/config.txt. Rebooting...")
-      subprocess.call(['sudo reboot'], shell=True)
-      time.sleep(5)
-
-    except:
-      log(87, "Could not write to /boot/config.txt. Please amend manually.")
-
-    finally:
-      file.close()
-
-  except:
-    log(86, "Backup failed. Write aborted. Please amend /boot/config.txt manually.")
-
-def main():
-  global logFile
-  logFile = os.getenv('HOME') + "/Safe-Power-Monitor/log.txt"
-
-  log(11, "Safe Power Monitor script running.")
 
   # If newLine does not exist, add it
-  if readConfig() is False:
-    appendConfig()
+  if configDone is False:
+    log(81, "No dtoverlay line found for keep-alive in /boot/config.txt")
+    # Backup config.txt first!
+    try:
+      subprocess.call(['sudo cp /boot/config.txt /boot/config.bak'], shell=True)
+      log(82, "Backup successfully created /boot/config.bak")
+
+      # Write the new line
+      try:
+        with open("/boot/config.txt", "r") as f:
+          s = f.read() + "\n" + newLine
+          with open("/tmp/config.txt", "w") as outf:
+            outf.write(s)
+
+        subprocess.call(['sudo cp /tmp/config.txt /boot/config.txt'], shell=True)
+        subprocess.call(['sudo rm /tmp/config.txt'], shell=True)
+        log(83, "Successfully amended /boot/config.txt. Rebooting...")
+        print("Successfully amended /boot/config.txt. Rebooting...")
+        subprocess.call(['sudo reboot'], shell=True)
+        time.sleep(5)
+
+      except:
+        log(87, "Could not write to /boot/config.txt. Please amend manually.")
+
+      finally:
+        file.close()
+
+    except:
+      log(86, "Backup failed. Write aborted. Please amend /boot/config.txt manually.")
 
   # Configure GPIO mode
   GPIO.setmode(GPIO.BCM)
