@@ -6,7 +6,7 @@ This power monitor script accompanies the Safe Shutdown PCB by Camble. Compatibl
 
 The script can log events to a log file to help with troubleshooting and is on by default.
 
-Required Hardware and Components
+Requirements
 --------------------------------
 - [Raspberry Pi Zero](https://www.raspberrypi.org/products/pi-zero/) (or Model B+, Raspberry Pi 2 and Pi 3)
 - [Adafruit Powerboost 1000C](https://learn.adafruit.com/adafruit-powerboost-1000c-load-share-usb-charge-boost/overview) or a generic [BangGood/GearBest](http://banggood.com/37V-Liion-Battery-Mini-USB-To-USB-A-Power-Apply-Module-p-928948.html?p=9B1915347037201311DI) power supply module.
