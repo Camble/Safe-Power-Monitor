@@ -133,10 +133,12 @@ def main():
   powerWatcher = PowerWatcher(powerGPIO, powerInternalResistor, powerTriggerState)
   if (batteryGPIO is not None):
     playCount = 0
-    if (AdafruitPowerBoost is True):
-      batteryWatcher = AdafruitBatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
-    else:
-      batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
+    batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
+
+    #if (AdafruitPowerBoost is True):
+    #  batteryWatcher = AdafruitBatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
+    #else:
+    #  batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
 
 # Run the program
 main()
