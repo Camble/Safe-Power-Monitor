@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import subprocess
 import os
 import sys
+import time
 
 from GpioWatcher import GpioWatcher
 
