@@ -1,3 +1,5 @@
+import RPi.GPIO as GPIO
+
 class GpioWatcher(object):
   def __init__(self, gpio_pin, internal_pull, trigger_state):
     # Configure GPIO pin

@@ -1,3 +1,6 @@
+import RPi.GPIO as GPIO
+import subprocess
+
 from BatteryWatcher import BatteryWatcher
 
 class AdafruitBatteryWatcher(BatteryWatcher):
