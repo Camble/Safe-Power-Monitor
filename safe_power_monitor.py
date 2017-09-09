@@ -31,7 +31,7 @@ import subprocess
 import sys
 import time
 import os
-import PowerWatcher
+from PowerWatcher import PowerWatcher
 from datetime import timedelta
 from datetime import datetime
 from shutil import copyfile
