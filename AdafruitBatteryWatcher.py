@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import subprocess
+import time
 
 from BatteryWatcher import BatteryWatcher
 
