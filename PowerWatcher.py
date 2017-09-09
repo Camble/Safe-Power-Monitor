@@ -1,3 +1,7 @@
+import RPi.GPIO as GPIO
+import subprocess
+import sys
+
 from GpioWatcher import GpioWatcher
 
 class PowerWatcher(GpioWatcher):

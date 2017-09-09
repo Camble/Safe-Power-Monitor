@@ -1,3 +1,8 @@
+import RPi.GPIO as GPIO
+import subprocess
+import os
+import sys
+
 from GpioWatcher import GpioWatcher
 
 class BatteryWatcher(GpioWatcher):
