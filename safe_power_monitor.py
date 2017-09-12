@@ -1,3 +1,7 @@
+import ptvsd
+
+ptvsd.enable_attach('secret')
+
 #!/usr/bin/env python2.7
 # date: 13/10/16
 # author: Camble
