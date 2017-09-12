@@ -75,8 +75,8 @@ class GpioWatcher(object):
       GPIO.cleanup()
 
     # If the pin is already triggered, perform the callback
-    if GPIO.input(self.pin) is self.trigger:
-      self.callbackFunc(self.pin)
+    #if GPIO.input(self.pin) is self.trigger:
+    #  self.callbackFunc(self.pin)
 
   def callbackFunc(self, channel):
     log(99, "GPIO Pin " + str(self.pin) + " was triggered!")
