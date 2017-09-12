@@ -135,6 +135,7 @@ def main():
 
   # Create some GpioWatchers
   powerWatcher = PowerWatcher(powerGPIO, powerInternalResistor, powerTriggerState)
+
   if (batteryGPIO is not None):
     playCount = 0
     batteryWatcher = BatteryWatcher(batteryGPIO, batteryInternalResistor, batteryTriggerState)
