@@ -109,7 +109,7 @@ class BatteryWatcher(GpioWatcher):
       self.playerFlag = 1
       self.previousWarn = time.time()
       log(23, "Low battery warning number " + warnCount + " was displayed.")
-      os.system(videoPlayer + " " + lowalertVideo + " --alpha " + videoAlpha + ";")
+      os.system(videoPlayer + " " + lowalertVideo + " --alpha " + str(videoAlpha) + ";")
       playerFlag = 0
 
       # Rebind GPIO event detect after system call (due to a bug with the GPIO library and threaded events)
@@ -118,7 +118,7 @@ class BatteryWatcher(GpioWatcher):
 
   def shutdown(self):
     playerFlag = 1
-    os.system(videoPlayer + " " + shutdownVideo + " --alpha " + videoAlpha + ";");
+    os.system(videoPlayer + " " + shutdownVideo + " --alpha " + str(videoAlpha) + ";");
     playerFlag = 0
     # Last chance to plug the charger in!
     if GPIO.input(self.pin) is not trigger:
