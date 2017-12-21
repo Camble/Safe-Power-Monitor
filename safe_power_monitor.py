@@ -108,8 +108,8 @@ class BatteryWatcher(GpioWatcher):
       self.warnCount += 1
       self.playerFlag = 1
       self.previousWarn = time.time()
-      log(23, "Low battery warning number " + warnCount + " was displayed.")
-      os.system(videoPlayer + " " + lowalertVideo + " --alpha " + str(videoAlpha) + ";")
+      log(23, "Low battery warning number " + str(warnCount) + " was displayed.")
+      os.system(videoPlayer + " " + lowalertVideo + " --alpha " + videoAlpha + ";")
       playerFlag = 0
 
       # Rebind GPIO event detect after system call (due to a bug with the GPIO library and threaded events)
