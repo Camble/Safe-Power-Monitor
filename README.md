@@ -73,7 +73,7 @@ sudo nano /boot/config.txt
 ```
 Add the following line:
 ```
-dtoverlay=gpio-poweroff,gpiopin=22,active_low="y"
+dtoverlay=gpio-poweroff:gpiopin=22,active_low="y"
 ```
 Press Ctrl+X to exit, and press 'Y' to save.
 
