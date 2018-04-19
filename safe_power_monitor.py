@@ -103,23 +103,23 @@ class BatteryWatcher(GpioWatcher):
   def warn(self):
     # If the maximum warning count has been reached, skip it and shutdown
     if self.warnCount >= numberOfWarnings:
-      shutdown()
+      self.shutdown()
     else:
       self.warnCount += 1
       self.playerFlag = 1
       self.previousWarn = time.time()
-      log(23, "Low battery warning number " + str(warnCount) + " was displayed.")
+      log(23, "Low battery warning number " + str(self.warnCount) + " was displayed.")
       os.system(videoPlayer + " " + lowalertVideo + " --alpha " + videoAlpha + ";")
-      playerFlag = 0
+      self.playerFlag = 0
 
       # Rebind GPIO event detect after system call (due to a bug with the GPIO library and threaded events)
       GPIO.remove_event_detect(self.pin)
       GPIO.add_event_detect(self.pin, self.edge, callback=self.callbackFunc, bouncetime=300)
 
   def shutdown(self):
-    playerFlag = 1
-    os.system(videoPlayer + " " + shutdownVideo + " --alpha " + str(videoAlpha) + ";");
-    playerFlag = 0
+    self.playerFlag = 1
+    os.system(videoPlayer + " " + shutdownVideo + " --alpha " + videoAlpha + ";");
+    self.playerFlag = 0
     # Last chance to plug the charger in!
     if GPIO.input(self.pin) is not trigger:
       log(26, "Low battery on pin " + str(self.pin) + " was cancelled.")
@@ -239,17 +239,17 @@ def main():
   # Configure pin settings based on the choice of power supply
   if AdafruitPowerBoost is True:
     log(30, "Adafruit PowerBoost is selected.")
-    powerTriggerState       = 0               # 0 = Low, 1 = High
-    batteryTriggerState     = 0               # 0 = Low, 1 = High
+    powerTriggerState       = 0                   # 0 = Low, 1 = High
+    batteryTriggerState     = 0                   # 0 = Low, 1 = High
     powerInternalResistor   = GPIO.PUD_DOWN   # Use GPIO.PUD_UP, GPIO.PUD_DOWN, or None
-    batteryInternalResistor = None            # Use GPIO.PUD_UP, GPIO.PUD_DOWN, or None
+    batteryInternalResistor = None                # Use GPIO.PUD_UP, GPIO.PUD_DOWN, or None
 
   elif AdafruitPowerBoost is False:
     log(40, "Generic Power Supply is selected.")
-    powerTriggerState       = 1               # 0 = Low, 1 = High
-    batteryTriggerState     = 0               # 0 = Low, 1 = High
+    powerTriggerState       = 1                   # 0 = Low, 1 = High
+    batteryTriggerState     = 0                   # 0 = Low, 1 = High
     powerInternalResistor   = GPIO.PUD_DOWN   # Use GPIO.PUD_UP, GPIO.PUD_DOWN, or None
-    batteryInternalResistor = None            # Use GPIO.PUD_UP, GPIO.PUD_DOWN, or None
+    batteryInternalResistor = None                # Use GPIO.PUD_UP, GPIO.PUD_DOWN, or None
 
   # Create some GpioWatchers
   powerWatcher = PowerWatcher(powerGPIO, powerInternalResistor, powerTriggerState)
