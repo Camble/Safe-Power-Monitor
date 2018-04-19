@@ -1,4 +1,4 @@
-# Safe-Power-Monitor 1.0 by Camble
+# Safe-Power-Monitor 1.0.1
 
 Background
 ----------
