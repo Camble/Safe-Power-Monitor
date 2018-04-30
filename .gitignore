@@ -5,3 +5,6 @@
 /.vs/Safe-Power-Monitor/v15/.suo
 /Safe-Power-Monitor.pyproj
 /Safe-Power-Monitor.sln
+*.user
+/.vs/VSWorkspaceState.json
+*.pyc
