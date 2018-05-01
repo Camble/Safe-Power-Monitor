@@ -148,11 +148,8 @@ class BatteryWatcher(GpioWatcher):
   def callbackFunc(self, channel):
     if GPIO.input(self.pin) is not self.trigger:
       self.callbackTriggered = 0
-      return
-
     else:
       self.callbackTriggered = 1
-      self.monitor()
 
 class BatteryWatcher_PB(BatteryWatcher):
   def callbackFunc(self, channel):
@@ -265,7 +262,7 @@ main()
 
 # Wait for GPIO events
 while True:
-  #batteryWatcher.monitor()
+  batteryWatcher.monitor()
   time.sleep(1)
 
 GPIO.cleanup()
