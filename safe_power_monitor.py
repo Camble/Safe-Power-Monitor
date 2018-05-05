@@ -262,7 +262,7 @@ main()
 
 # Wait for GPIO events
 while True:
-  batteryWatcher.monitor()
+  # batteryWatcher.monitor()
   time.sleep(1)
 
 GPIO.cleanup()
