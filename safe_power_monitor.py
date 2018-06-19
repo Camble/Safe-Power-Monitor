@@ -172,7 +172,7 @@ class BatteryWatcher_PB(BatteryWatcher):
 
 def main():
   global logFile
-  logFile = os.getenv('HOME') + "/Safe-Power-Monitor/log.txt"
+  logFile = "/home/pi/Safe-Power-Monitor/log.txt"
 
   log(11, "Safe Power Monitor script running.")
 

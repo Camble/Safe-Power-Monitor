@@ -1,0 +1,8 @@
+[Unit]
+Description=Safe Power Monitor	
+
+[Service]
+ExecStart=/usr/bin/nice -n 19 /usr/bin/python /home/pi/Safe-Power-Monitor/safe_power_monitor.py
+
+[Install]
+WantedBy=multi-user.target

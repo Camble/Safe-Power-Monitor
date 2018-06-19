@@ -85,7 +85,7 @@ If you are happy you have configured the script correctly, add it to the startup
 Note: if you chose to let the script alter /boot/config.txt for you, it will reboot at this point.
 
 ```
-echo "@reboot /usr/bin/nice -n 19 /usr/bin/python ~/Safe-Power-Monitor/safe_power_monitor.py" >> mycron; crontab mycron;rm mycron
+sudo cp safepowermonitor.service /etc/systemd/system/; sudo systemctl enable safepowermonitor.service; sudo systemctl start safepowermonitor.service
 ```
 
 If you would prefer to test the script first, run it once without adding to startup.
