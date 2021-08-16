@@ -1,4 +1,4 @@
-# Safe-Power-Monitor 1.0.2
+# Safe-Power-Monitor 1.0.3
 
 Background
 ----------
