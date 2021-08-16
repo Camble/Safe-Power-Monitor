@@ -37,13 +37,12 @@ lowalertVideo       = "~/Safe-Power-Monitor/lowbattalert.mp4"         # Alphanum
 
 def log(code, message):
   if DebugLog is True:
-    # If the log file doesn't exist, create it
-    if os.path.isfile(logFile) is False:
-      open(logFile, "w")
-
-    file = open(logFile, "a")
-    file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
-    file.close()
+    try:
+      file = open(logFile, "a+")
+      file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [" + str(code) + "] " + message + "\n")
+      file.close()
+    except:
+      print("Unable to open " + logFile + " for writing")
 
 class GpioWatcher(object):
   def __init__(self, gpio_pin, internal_pull, trigger_state):
