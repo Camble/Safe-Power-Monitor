@@ -1,7 +1,7 @@
 #!/usr/bin/env python2.7
 # date: 13/10/16
 # author: Camble
-# version: 1.0a
+# version: 1.0.3
 # name: Safe-Power-Monitor - A utility to compliment the Safe Shutdown Switch for the Gameboy Zero project
 # description: A GPIO monitor with graceful shutdown capability and video warning overlays
 # source: https://github.com/Camble/Safe-Power-Monitor
